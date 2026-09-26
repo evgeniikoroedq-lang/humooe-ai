@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Humooe AI</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#0b0d12;color:#fff;height:100vh;overflow:hidden}
+button,input,textarea{font:inherit}
+.app{display:flex;height:100vh}
+.sidebar{width:270px;background:#11141b;border-right:1px solid #252a35;padding:18px;display:flex;flex-direction:column}
+.logo{font-size:25px;font-weight:800;margin-bottom:25px}
+.new{border:0;border-radius:14px;padding:13px;background:#fff;color:#111;cursor:pointer;font-weight:700}
+.history{margin-top:20px;overflow:auto;flex:1}
+.history div{padding:11px;border-radius:10px;color:#aaa;margin-bottom:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bottom{display:flex;gap:8px}
+.bottom button{flex:1;background:#1a1e27;color:#fff;border:1px solid #292f3b;border-radius:10px;padding:10px;cursor:pointer}
+.main{flex:1;display:flex;flex-direction:column;min-width:0}
+.top{height:65px;border-bottom:1px solid #252a35;display:flex;align-items:center;padding:0 20px;justify-content:space-between}
+.menu{display:none;background:none;border:0;color:#fff;font-size:25px}
+.title{font-weight:800;font-size:20px}
+.chat{flex:1;overflow:auto;padding:25px;scroll-behavior:smooth}
+.welcome{height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center}
+.orb{width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,#fff,#777);box-shadow:0 0 45px #ffffff33;animation:pulse 2.5s infinite}
+@keyframes pulse{50%{transform:scale(1.08);box-shadow:0 0 70px #fff4}}
+.welcome h1{font-size:40px;margin:25px 0 8px}
+.welcome p{color:#8e96a5}
+.msg{display:flex;margin:14px auto;max-width:850px}
+.msg.user{justify-content:flex-end}
+.bubble{max-width:80%;padding:13px 16px;border-radius:17px;line-height:1.5;white-space:pre-wrap;word-wrap:break-word}
+.user .bubble{background:#252a35}
+.assistant .bubble{background:#151922}
+.input-area{padding:15px 20px 20px;border-top:1px solid #252a35}
+.box{max-width:850px;margin:auto;display:flex;gap:10px;background:#151922;border:1px solid #303643;border-radius:18px;padding:10px}
+textarea{flex:1;background:transparent;border:0;outline:0;color:#fff;resize:none;min-height:42px;max-height:140px;padding:10px}
+.send{width:45px;height:45px;border:0;border-radius:13px;background:#fff;color:#111;cursor:pointer;font-weight:800}
+.typing{opacity:.6}
+@media(max-width:700px){
+.sidebar{position:fixed;left:-280px;top:0;bottom:0;z-index:5;transition:.25s}
+.sidebar.open{left:0}
+.menu{display:block}
+.chat{padding:15px}
+.welcome h1{font-size:32px}
+.bubble{max-width:90%}
+.input-area{padding:10px}
+}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar" id="sidebar">
+<div class="logo">Humooe AI</div>
+<button class="new" onclick="newChat()">＋ Новый чат</button>
+<div class="history" id="history"></div>
+<div class="bottom">
+<button onclick="toggleTheme()">Тема</button>
+<button onclick="clearHistory()">Очистить</button>
+</div>
+</aside>
+
+<main class="main">
+<header class="top">
+<button class="menu" onclick="toggleMenu()">☰</button>
+<div class="title">Humooe AI</div>
+<div></div>
+</header>
+
+<section class="chat" id="chat">
+<div class="welcome" id="welcome">
+<div class="orb"></div>
+<h1>Humooe AI</h1>
+<p>Ваш умный AI-помощник</p>
+</div>
+</section>
+
+<div class="input-area">
+<div class="box">
+<textarea id="input" placeholder="Напишите сообщение..." rows="1"></textarea>
+<button class="send" onclick="send()">↑</button>
+</div>
+</div>
+</main>
+</div>
+
+<script>
+const API="https://hummoe-ai.evgeniikoroedq.workers.dev";
+let messages=[];
+let chats=JSON.parse(localStorage.getItem("humooe_chats")||"[]");
+
+const chat=document.getElementById("chat");
+const input=document.getElementById("input");
+const history=document.getElementById("history");
+
+function save(){
+localStorage.setItem("humooe_chats",JSON.stringify(chats));
+}
+
+function renderHistory(){
+history.innerHTML="";
+chats.slice().reverse().forEach((c,i)=>{
+let d=document.createElement("div");
+d.textContent=c.title||"Новый чат";
+d.onclick=()=>loadChat(chats.length-1-i);
+history.appendChild(d);
+});
+}
+
+function loadChat(i){
+messages=chats[i].messages||[];
+renderMessages();
+document.getElementById("sidebar").classList.remove("open");
+}
+
+function newChat(){
+messages=[];
+renderMessages();
+}
+
+function clearHistory(){
+chats=[];
+save();
+renderHistory();
+newChat();
+}
+
+function toggleMenu(){
+document.getElementById("sidebar").classList.toggle("open");
+}
+
+function toggleTheme(){
+document.body.classList.toggle("light");
+}
+
+function renderMessages(){
+chat.innerHTML="";
+if(!messages.length){
+chat.innerHTML='<div class="welcome"><div class="orb"></div><h1>Humooe AI</h1><p>Ваш умный AI-помощник</p></div>';
+return;
+}
+messages.forEach(m=>addMessage(m.role,m.content));
+chat.scrollTop=chat.scrollHeight;
+}
+
+function addMessage(role,text){
+let row=document.createElement("div");
+row.className="msg "+role;
+let bubble=document.createElement("div");
+bubble.className="bubble";
+bubble.textContent=text;
+row.appendChild(bubble);
+chat.appendChild(row);
+}
+
+async function send(){
+let text=input.value.trim();
+if(!text)return;
+
+if(!messages.length)chat.innerHTML="";
+messages.push({role:"user",content:text});
+addMessage("user",text);
+input.value="";
+input.style.height="auto";
+chat.scrollTop=chat.scrollHeight;
+
+let typing=document.createElement("div");
+typing.className="msg assistant";
+typing.id="typing";
+typing.innerHTML='<div class="bubble typing">Humooe думает…</div>';
+chat.appendChild(typing);
+chat.scrollTop=chat.scrollHeight;
+
+try{
+let res=await fetch(API,{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify({messages:messages.slice(-20)})
+});
+
+let data=await res.json();
+document.getElementById("typing")?.remove();
+
+let answer=data.answer||"Не удалось получить ответ.";
+messages.push({role:"assistant",content:answer});
+addMessage("assistant",answer);
+
+if(messages.length===2){
+chats.push({
+title:text.slice(0,40),
+messages:[...messages]
+});
+}else if(chats.length){
+chats[chats.length-1].messages=[...messages];
+}
+save();
+renderHistory();
+chat.scrollTop=chat.scrollHeight;
+
+}catch(e){
+document.getElementById("typing")?.remove();
+addMessage("assistant","Не удалось связаться с Humooe AI.");
+}
+}
+
+input.addEventListener("keydown",e=>{
+if(e.key==="Enter"&&!e.shiftKey){
+e.preventDefault();
+send();
+}
+});
+
+input.addEventListener("input",()=>{
+input.style.height="auto";
+input.style.height=Math.min(input.scrollHeight,140)+"px";
+});
+
+renderHistory();
+</script>
+</body>
+</html>

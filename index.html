@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
 <title>Humooe AI</title>
 
@@ -11,350 +10,298 @@
 
 *{
 box-sizing:border-box;
+font-family:Arial,sans-serif
 }
 
 body{
 margin:0;
 height:100vh;
 overflow:hidden;
-font-family:Arial, sans-serif;
 background:#050510;
-color:white;
+color:white
 }
 
 
-/* ===== BACKGROUND ===== */
+/* фон */
 
 .bg{
 position:fixed;
 inset:0;
-overflow:hidden;
 z-index:-1;
+overflow:hidden
 }
 
-
-.glow{
+.ball{
 position:absolute;
 border-radius:50%;
-filter:blur(90px);
-animation:move 12s infinite alternate;
+filter:blur(80px);
+animation:move 12s infinite alternate
 }
 
-
-.glow1{
+.b1{
 width:350px;
 height:350px;
 background:#7c3aed;
-top:-120px;
-left:-120px;
+top:-100px;
+left:-100px
 }
 
-
-.glow2{
+.b2{
 width:400px;
 height:400px;
 background:#2563eb;
-right:-150px;
-bottom:-150px;
-animation-delay:3s;
+right:-120px;
+bottom:-120px;
+animation-delay:3s
 }
 
-
-.glow3{
+.b3{
 width:250px;
 height:250px;
-background:#c026d3;
-left:40%;
+background:#d946ef;
 top:40%;
-animation-delay:6s;
+left:40%;
+animation-delay:5s
 }
-
 
 @keyframes move{
-
-from{
-transform:translate(0,0);
-}
-
-to{
-transform:translate(80px,70px);
-}
-
+from{transform:translate(0)}
+to{transform:translate(80px,60px)}
 }
 
 
 
-/* ===== APP ===== */
-
+/* приложение */
 
 .app{
-
 height:100vh;
 display:flex;
-flex-direction:column;
-
+flex-direction:column
 }
-
-
-
-/* ===== HEADER ===== */
 
 
 .header{
-
 padding:20px;
-
 display:flex;
 justify-content:space-between;
-align-items:center;
-
+align-items:center
 }
-
 
 
 .logo{
-
-font-size:28px;
-font-weight:900;
-
-animation:fade .8s;
-
+font-size:27px;
+font-weight:900
 }
-
 
 .logo span{
-
-color:#8b5cf6;
-
+color:#8b5cf6
 }
-
-
-
-@keyframes fade{
-
-from{
-opacity:0;
-transform:translateY(-20px);
-}
-
-to{
-opacity:1;
-}
-
-}
-
 
 
 .profile{
-
 width:45px;
 height:45px;
-
 border-radius:50%;
-
-background:
-rgba(255,255,255,.12);
-
+background:#ffffff20;
 backdrop-filter:blur(20px);
-
 display:flex;
 align-items:center;
 justify-content:center;
-
-animation:pulse 3s infinite;
-
+cursor:pointer;
+z-index:5;
+animation:pulse 3s infinite
 }
-
 
 
 @keyframes pulse{
 
 50%{
-
-transform:scale(1.1);
-
-box-shadow:
-0 0 35px #8b5cf6;
-
+box-shadow:0 0 35px #8b5cf6;
+transform:scale(1.08)
 }
 
 }
 
 
 
-/* ===== AI CORE ===== */
-
+/* AI */
 
 .core{
-
 display:flex;
-justify-content:center;
-
-padding:15px;
-
-}
-
-
-.ai-core{
-
-width:120px;
-height:120px;
-
-border-radius:50%;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-font-size:45px;
-
-background:
-linear-gradient(
-135deg,
-#8b5cf6,
-#2563eb
-);
-
-
-box-shadow:
-0 0 50px #7c3aed;
-
-
-animation:
-pulse 3s infinite,
-spin 8s linear infinite;
-
-}
-
-
-
-@keyframes spin{
-
-from{
-filter:hue-rotate(0deg);
-}
-
-to{
-filter:hue-rotate(360deg);
-}
-
-}
-
-
-/* ===== CHAT ===== */
-
-
-.chat{
-
-flex:1;
-
-overflow-y:auto;
-
-padding:20px;
-
-}
-
-
-.message{
-
-max-width:85%;
-
-padding:15px;
-
-margin-bottom:15px;
-
-border-radius:22px;
-
-animation:show .4s;
-
-}
-
-
-
-@keyframes show{
-
-from{
-
-opacity:0;
-
-transform:translateY(25px);
-
-}
-
-to{
-
-opacity:1;
-
-}
-
+justify-content:center
 }
 
 
 .ai{
-
-background:
-rgba(255,255,255,.12);
-
-border:
-1px solid rgba(255,255,255,.15);
-
-backdrop-filter:blur(20px);
-
+width:120px;
+height:120px;
+border-radius:50%;
+background:linear-gradient(135deg,#8b5cf6,#2563eb);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:45px;
+box-shadow:0 0 50px #7c3aed;
+animation:pulse 3s infinite
 }
 
 
 
-.user{
-
-margin-left:auto;
-
-background:
-linear-gradient(
-135deg,
-#7c3aed,
-#2563eb
-);
-
-}
-
-
-
-/* ===== MOBILE ===== */
-
-
-@media(max-width:600px){
-
-.logo{
-
-font-size:23px;
-
-}
+/* чат */
 
 
 .chat{
+flex:1;
+overflow:auto;
+padding:20px
+}
 
+
+.msg{
+max-width:85%;
 padding:15px;
+border-radius:22px;
+margin-bottom:15px;
+animation:show .4s;
+}
+
+
+@keyframes show{
+from{
+opacity:0;
+transform:translateY(20px)
+}
+}
+
+
+.ai-msg{
+background:#ffffff18;
+backdrop-filter:blur(20px)
+}
+
+
+.user-msg{
+margin-left:auto;
+background:linear-gradient(135deg,#7c3aed,#2563eb)
+}
+
+
+
+/* кнопки */
+
+
+.quick{
+display:flex;
+gap:10px;
+padding:10px;
+overflow:auto
+}
+
+
+.quick button{
+
+border:0;
+padding:12px 18px;
+border-radius:30px;
+background:#ffffff20;
+color:white;
+white-space:nowrap
+}
+
+
+
+/* ввод */
+
+
+.bottom{
+display:flex;
+gap:10px;
+padding:15px
+}
+
+
+input{
+
+flex:1;
+height:55px;
+border-radius:30px;
+border:1px solid #ffffff30;
+background:#ffffff15;
+color:white;
+padding:0 20px;
+font-size:16px;
+outline:none
 
 }
 
+
+.send{
+
+width:55px;
+height:55px;
+border-radius:50%;
+border:0;
+background:linear-gradient(135deg,#8b5cf6,#2563eb);
+color:white;
+font-size:22px;
+cursor:pointer
+
 }
 
 
-    </style>
-    
+
+/* окно профиля */
+
+
+.modal{
+
+position:fixed;
+inset:0;
+display:none;
+align-items:center;
+justify-content:center;
+background:#0008;
+
+}
+
+
+.box{
+
+width:90%;
+max-width:350px;
+padding:25px;
+border-radius:25px;
+background:#111827;
+box-shadow:0 0 40px #8b5cf6
+
+}
+
+
+.box button{
+
+width:100%;
+margin-top:10px;
+padding:14px;
+border:0;
+border-radius:20px;
+background:#8b5cf6;
+color:white
+
+}
+
+
+</style>
 </head>
+
 
 <body>
 
 
 <div class="bg">
-
-<div class="glow glow1"></div>
-<div class="glow glow2"></div>
-<div class="glow glow3"></div>
-
+<div class="ball b1"></div>
+<div class="ball b2"></div>
+<div class="ball b3"></div>
 </div>
-
 
 
 <div class="app">
@@ -367,366 +314,193 @@ Humooe <span>AI</span>
 </div>
 
 
-<div class="profile" id="profileBtn">
+<div class="profile" onclick="openProfile()">
 👤
 </div>
 
-
 </div>
-
 
 
 <div class="core">
-
-<div class="ai-core">
-✦
+<div class="ai">✦</div>
 </div>
-
-</div>
-
 
 
 
 <div class="chat" id="chat">
 
-
-<div class="message ai">
+<div class="msg ai-msg">
 
 👋 Привет! Я Humooe AI.
 
 <br><br>
 
-Могу помочь:
-<br>
-🧮 решить задачу
-<br>
-📚 объяснить тему
-<br>
-✍️ создать текст
-<br>
-💡 придумать идеи
+Задай мне любой вопрос.
 
 </div>
 
-
 </div>
-
 
 
 
 <div class="quick">
 
-
-<button>
-🧮 Задача
-</button>
-
-
-<button>
-📚 Учёба
-</button>
-
-
-<button>
-✍️ Текст
-</button>
-
-
-<button>
-💡 Идеи
-</button>
-
+<button onclick="quick('Реши задачу')">🧮 Задача</button>
+<button onclick="quick('Объясни тему')">📚 Учёба</button>
+<button onclick="quick('Напиши текст')">✍️ Текст</button>
+<button onclick="quick('Придумай идеи')">💡 Идеи</button>
 
 </div>
-
 
 
 
 <div class="bottom">
 
+<input id="input" placeholder="Напишите вопрос...">
 
-<input 
-class="input"
-id="input"
-placeholder="Напишите вопрос..."
->
-
-
-<button class="send" id="send">
-
+<button class="send" onclick="send()">
 ➤
+</button>
 
+</div>
+
+
+
+</div>
+
+
+
+
+<div class="modal" id="modal">
+
+
+<div class="box">
+
+<h2>👤 Профиль</h2>
+
+<p>
+Вход и регистрация Humooe AI
+</p>
+
+
+<button>
+Войти
 </button>
 
 
+<button>
+Регистрация
+</button>
+
+
+<button onclick="closeProfile()">
+Закрыть
+</button>
+
+
+</div>
+
 
 </div>
 
 
 
-</div>
+
 <script>
 
 
-// ===== НАСТРОЙКА AI =====
+// сюда потом вставим Worker
 
-// сюда позже вставишь адрес своего Cloudflare Worker
-const AI_API = "ВСТАВЬ_СЮДА_WORKER_URL";
-
-
-// ===== ЭЛЕМЕНТЫ =====
-
-const chat = document.getElementById("chat");
-const input = document.getElementById("input");
-const send = document.getElementById("send");
+const AI_API="";
 
 
 
-// ===== ДОБАВЛЕНИЕ СООБЩЕНИЯ =====
+function add(text,type){
 
+let div=document.createElement("div");
 
-function addMessage(text,type){
-
-const div=document.createElement("div");
-
-div.className="message "+type;
+div.className="msg "+type;
 
 div.innerHTML=text;
 
-chat.appendChild(div);
-
-chat.scrollTop=chat.scrollHeight;
-
-}
-
-
-
-// ===== АНИМАЦИЯ AI =====
-
-
-function showTyping(){
-
-
-const div=document.createElement("div");
-
-div.className="message ai";
-
-div.id="typing";
-
-div.innerHTML=
-"Humooe AI думает <span>.</span><span>.</span><span>.</span>";
-
-
-chat.appendChild(div);
-
-chat.scrollTop=chat.scrollHeight;
+document
+.getElementById("chat")
+.appendChild(div);
 
 
 }
 
 
 
-function hideTyping(){
+function send(){
 
-const t=document.getElementById("typing");
+let input=document.getElementById("input");
 
-if(t){
-
-t.remove();
-
-}
-
-}
-
-
-
-
-// ===== ОТПРАВКА =====
-
-
-async function sendMessage(){
-
-
-const text=input.value.trim();
-
+let text=input.value.trim();
 
 if(!text)return;
 
 
-
-addMessage(text,"user");
-
+add(text,"user-msg");
 
 input.value="";
 
 
-showTyping();
-
-
-
-try{
-
-
-// Если Worker подключён
-
-if(AI_API && !AI_API.includes("ВСТАВЬ")){
-
-
-const response = await fetch(AI_API,{
-
-method:"POST",
-
-headers:{
-
-"Content-Type":"application/json"
-
-},
-
-
-body:JSON.stringify({
-
-message:text
-
-})
-
-
-});
-
-
-
-const data=await response.json();
-
-
-
-hideTyping();
-
-
-addMessage(
-data.reply || data.response || "Нет ответа",
-"ai"
-);
-
-
-
-}
-
-
-// временный режим
-
-else{
-
-
 setTimeout(()=>{
 
-
-hideTyping();
-
-
-addMessage(
-
-"🚀 AI пока не подключён. Добавь адрес Worker в настройках.",
-
-"ai"
-
+add(
+"🤖 Humooe AI получил вопрос. Подключение нейросети добавим следующим шагом.",
+"ai-msg"
 );
 
-
-},1200);
-
+},800);
 
 
 }
 
 
 
-}
 
-catch(error){
-
-
-hideTyping();
-
-
-addMessage(
-
-"❌ Ошибка подключения к AI",
-
-"ai"
-
-);
-
-
-}
-
-
-
-}
-
-
-
-// кнопка
-
-send.addEventListener(
-"click",
-sendMessage
-);
-
-
-
-
-// Enter
-
-input.addEventListener(
+document
+.getElementById("input")
+.addEventListener(
 "keydown",
-function(e){
+e=>{
 
-if(e.key==="Enter"){
+if(e.key==="Enter")
+send();
 
-sendMessage();
+});
+
+
+
+function quick(t){
+
+document.getElementById("input").value=t;
+
+send();
 
 }
 
-});
 
 
-
-
-// быстрые кнопки
-
+function openProfile(){
 
 document
-.querySelectorAll(".quick button")
-.forEach(button=>{
+.getElementById("modal")
+.style.display="flex";
 
-
-button.addEventListener("click",()=>{
-
-
-input.value=button.innerText;
-
-sendMessage();
-
-
-});
-
-
-});
+}
 
 
 
-// профиль
+function closeProfile(){
 
 document
-.getElementById("profileBtn")
-.onclick=()=>{
+.getElementById("modal")
+.style.display="none";
 
-
-alert(
-"👤 Авторизация будет добавлена следующим этапом"
-);
-
-
-};
+}
 
 
 

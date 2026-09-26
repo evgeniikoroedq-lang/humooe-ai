@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,94 +11,70 @@
 
 *{
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial;
 }
 
 body{
 margin:0;
 height:100vh;
-overflow:hidden;
-background:#050510;
+background:#050505;
 color:white;
-}
-
-
-/* АНИМИРОВАННЫЙ ФОН */
-
-.bg{
-position:fixed;
-inset:0;
-z-index:-1;
 overflow:hidden;
 }
 
 
-.light{
-position:absolute;
-border-radius:50%;
-filter:blur(90px);
-animation:move 12s infinite alternate;
+/* фон */
+
+body:before{
+
+content:"";
+
+position:fixed;
+inset:-200px;
+
+background:
+radial-gradient(circle at 20% 20%,#333,transparent 30%),
+radial-gradient(circle at 80% 80%,#222,transparent 30%);
+
+filter:blur(80px);
+
+animation:bgmove 15s infinite alternate;
+
+z-index:-1;
+
 }
 
 
-.one{
-width:350px;
-height:350px;
-background:#7c3aed;
-top:-100px;
-left:-100px;
-}
-
-
-.two{
-width:400px;
-height:400px;
-background:#2563eb;
-right:-150px;
-bottom:-100px;
-animation-delay:3s;
-}
-
-
-.three{
-width:250px;
-height:250px;
-background:#c026d3;
-top:40%;
-left:40%;
-animation-delay:6s;
-}
-
-
-@keyframes move{
+@keyframes bgmove{
 
 from{
-transform:translate(0);
+transform:translate(0,0);
 }
 
 to{
-transform:translate(80px,60px);
+transform:translate(50px,40px);
 }
 
 }
 
 
 
-/* ОСНОВА */
+/* приложение */
 
 .app{
+
 height:100vh;
 display:flex;
 flex-direction:column;
+
 }
 
 
-
-/* ШАПКА */
+/* верх */
 
 .header{
 
-padding:20px;
+padding:25px;
 
 display:flex;
 justify-content:space-between;
@@ -108,28 +85,30 @@ align-items:center;
 
 .logo{
 
-font-size:28px;
-font-weight:900;
+font-size:25px;
+font-weight:700;
+
+letter-spacing:-1px;
 
 }
 
 
 .logo span{
 
-color:#8b5cf6;
+color:#aaa;
 
 }
 
 
 
-.profile{
+.avatar{
 
-width:48px;
-height:48px;
+width:45px;
+height:45px;
 
 border-radius:50%;
 
-background:#ffffff20;
+background:#ffffff15;
 
 backdrop-filter:blur(20px);
 
@@ -139,94 +118,29 @@ justify-content:center;
 
 cursor:pointer;
 
-animation:pulse 3s infinite;
+transition:.3s;
+
+}
+
+
+.avatar:active{
+
+transform:scale(.9);
 
 }
 
 
 
-@keyframes pulse{
+/* главный экран */
 
-50%{
+.home{
 
-transform:scale(1.1);
+padding:25px;
 
-box-shadow:0 0 40px #8b5cf6;
-
-}
+animation:show .7s;
 
 }
 
-
-
-/* AI */
-
-.core{
-
-display:flex;
-justify-content:center;
-
-}
-
-
-.ai{
-
-margin-top:10px;
-
-width:120px;
-height:120px;
-
-border-radius:50%;
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-font-size:45px;
-
-background:
-linear-gradient(
-135deg,
-#8b5cf6,
-#2563eb
-);
-
-box-shadow:
-0 0 50px #7c3aed;
-
-animation:pulse 3s infinite;
-
-}
-
-
-
-/* ЧАТ */
-
-.chat{
-
-flex:1;
-
-overflow:auto;
-
-padding:20px;
-
-}
-
-
-
-.message{
-
-max-width:85%;
-
-padding:16px;
-
-border-radius:22px;
-
-margin-bottom:15px;
-
-animation:show .4s;
-
-}
 
 
 @keyframes show{
@@ -234,7 +148,6 @@ animation:show .4s;
 from{
 
 opacity:0;
-
 transform:translateY(20px);
 
 }
@@ -243,32 +156,77 @@ transform:translateY(20px);
 
 
 
-.ai-msg{
+h1{
 
-background:#ffffff18;
+font-size:38px;
+
+line-height:1.1;
+
+}
+
+
+
+.subtitle{
+
+color:#aaa;
+
+font-size:18px;
+
+}
+
+
+
+.card{
+
+margin-top:25px;
+
+padding:25px;
+
+border-radius:25px;
+
+background:#ffffff10;
+
+border:1px solid #ffffff15;
 
 backdrop-filter:blur(20px);
 
-}
-
-
-.user-msg{
-
-margin-left:auto;
-
-background:
-linear-gradient(
-135deg,
-#7c3aed,
-#2563eb
-);
+transition:.3s;
 
 }
 
 
 
-/* БЫСТРЫЕ КНОПКИ */
+.card:active{
 
+transform:scale(.97);
+
+}
+
+
+
+.start{
+
+width:100%;
+
+padding:18px;
+
+border:0;
+
+border-radius:20px;
+
+background:white;
+
+color:black;
+
+font-size:18px;
+
+font-weight:600;
+
+}
+
+
+
+/* быстрые кнопки */
 
 .quick{
 
@@ -276,7 +234,40 @@ display:flex;
 
 gap:10px;
 
-padding:10px;
+margin-top:20px;
+
+overflow:auto;
+
+}
+
+
+.quick button{
+
+background:#ffffff10;
+
+color:white;
+
+border:1px solid #ffffff15;
+
+padding:15px;
+
+border-radius:18px;
+
+white-space:nowrap;
+
+}
+
+
+
+/* чат */
+
+.chat{
+
+display:none;
+
+flex:1;
+
+padding:20px;
 
 overflow:auto;
 
@@ -284,53 +275,68 @@ overflow:auto;
 
 
 
-.quick button{
-
-border:0;
-
-padding:12px 18px;
-
-border-radius:30px;
-
-background:#ffffff20;
-
-color:white;
-
-}
-
-
-
-/* ВВОД */
-
-
-.bottom{
-
-display:flex;
-
-gap:10px;
+.message{
 
 padding:15px;
 
+border-radius:20px;
+
+margin-bottom:12px;
+
+animation:show .4s;
+
+max-width:85%;
+
 }
 
 
-input{
+
+.ai{
+
+background:#ffffff12;
+
+}
+
+
+.user{
+
+margin-left:auto;
+
+background:white;
+
+color:black;
+
+}
+
+
+
+/* низ */
+
+.bottom{
+
+display:none;
+
+padding:15px;
+
+gap:10px;
+
+}
+
+
+
+.input{
 
 flex:1;
 
-height:55px;
+background:#ffffff12;
 
-border-radius:30px;
+border:1px solid #ffffff20;
 
-border:1px solid #ffffff30;
+border-radius:25px;
 
-background:#ffffff15;
+padding:15px;
 
 color:white;
-
-padding:0 20px;
-
-font-size:16px;
 
 outline:none;
 
@@ -342,29 +348,17 @@ outline:none;
 
 width:55px;
 
-height:55px;
-
 border-radius:50%;
 
 border:0;
 
-background:
-linear-gradient(
-135deg,
-#8b5cf6,
-#2563eb
-);
-
-color:white;
-
-font-size:22px;
+background:white;
 
 }
 
 
 
-/* ПРОФИЛЬ */
-
+/* профиль */
 
 .modal{
 
@@ -372,47 +366,54 @@ position:fixed;
 
 inset:0;
 
+background:#000a;
+
 display:none;
 
-align-items:center;
-
-justify-content:center;
-
-background:#0009;
+align-items:flex-end;
 
 }
 
 
-.card{
-
-width:90%;
-
-max-width:350px;
-
-padding:25px;
-
-border-radius:25px;
-
-background:#111827;
-
-}
-
-
-.card button{
+.sheet{
 
 width:100%;
 
-padding:14px;
+background:#111;
+
+border-radius:30px 30px 0 0;
+
+padding:30px;
+
+animation:up .4s;
+
+}
+
+
+
+@keyframes up{
+
+from{
+
+transform:translateY(100%);
+
+}
+
+}
+
+
+
+.sheet button{
+
+width:100%;
+
+padding:16px;
 
 margin-top:10px;
 
-border:0;
-
 border-radius:20px;
 
-background:#8b5cf6;
-
-color:white;
+border:0;
 
 }
 
@@ -426,16 +427,6 @@ color:white;
 <body>
 
 
-<div class="bg">
-
-<div class="light one"></div>
-<div class="light two"></div>
-<div class="light three"></div>
-
-</div>
-
-
-
 <div class="app">
 
 
@@ -446,36 +437,84 @@ Humooe <span>AI</span>
 </div>
 
 
-<div class="profile" onclick="openProfile()">
+<div class="avatar" onclick="profile()">
 👤
 </div>
 
+</div>
+
+
+
+<div class="home" id="home">
+
+
+<h1>
+Добрый вечер 👋
+</h1>
+
+
+<p class="subtitle">
+Ваш персональный AI-помощник
+</p>
+
+
+
+<div class="card" onclick="openChat()">
+
+<h2>
+Новый чат
+</h2>
+
+<p>
+Начать разговор с Humooe AI
+</p>
+
+
+<button class="start">
+Начать
+</button>
+
 
 </div>
 
 
 
 
-<div class="core">
+<h3>
+Быстрый доступ
+</h3>
 
-<div class="ai">
-✦
+
+<div class="quick">
+
+<button>
+🧮 Задачи
+</button>
+
+<button>
+📚 Учёба
+</button>
+
+<button>
+✍️ Тексты
+</button>
+
+
 </div>
 
+
 </div>
+
 
 
 
 <div class="chat" id="chat">
 
 
-<div class="message ai-msg">
+<div class="message ai">
 
-👋 Привет! Я Humooe AI.
-
-<br><br>
-
-Задай свой вопрос.
+Привет 👋
+Я Humooe AI.
 
 </div>
 
@@ -484,34 +523,13 @@ Humooe <span>AI</span>
 
 
 
-<div class="quick">
-
-<button onclick="quick('Реши задачу')">
-🧮 Задача
-</button>
+<div class="bottom" id="bottom">
 
 
-<button onclick="quick('Объясни тему')">
-📚 Учёба
-</button>
+<input class="input" id="input" placeholder="Напишите...">
 
 
-<button onclick="quick('Напиши текст')">
-✍️ Текст
-</button>
-
-
-</div>
-
-
-
-<div class="bottom">
-
-
-<input id="input" placeholder="Напишите вопрос...">
-
-
-<button class="send" onclick="sendMessage()">
+<button class="send" onclick="send()">
 ➤
 </button>
 
@@ -520,23 +538,20 @@ Humooe <span>AI</span>
 
 
 
+
 </div>
+
 
 
 
 <div class="modal" id="modal">
 
 
-<div class="card">
+<div class="sheet">
 
 <h2>
-👤 Профиль
+Профиль
 </h2>
-
-
-<p>
-Humooe AI аккаунт
-</p>
 
 
 <button>
@@ -561,37 +576,39 @@ Humooe AI аккаунт
 
 
 
+
 <script>
 
 
-function addMessage(text,type){
+function openChat(){
 
-let box=document.createElement("div");
+document.getElementById("home").style.display="none";
 
-box.className="message "+type;
+document.getElementById("chat").style.display="block";
 
-box.innerHTML=text;
-
-document
-.getElementById("chat")
-.appendChild(box);
-
+document.getElementById("bottom").style.display="flex";
 
 }
 
 
 
-function sendMessage(){
+function send(){
 
 let input=document.getElementById("input");
 
-let text=input.value.trim();
+if(!input.value)return;
 
 
-if(!text)return;
+let div=document.createElement("div");
+
+div.className="message user";
+
+div.innerHTML=input.value;
 
 
-addMessage(text,"user-msg");
+document
+.getElementById("chat")
+.appendChild(div);
 
 
 input.value="";
@@ -600,43 +617,27 @@ input.value="";
 setTimeout(()=>{
 
 
-addMessage(
-"🤖 Humooe AI готов. Подключение настоящей нейросети добавим следующим шагом.",
-"ai-msg"
-);
+let ai=document.createElement("div");
 
+ai.className="message ai";
 
-},800);
-
-
-}
-
+ai.innerHTML=
+"Humooe AI готов ответить 🚀";
 
 
 document
-.getElementById("input")
-.addEventListener(
-"keydown",
-function(e){
-
-if(e.key==="Enter")
-sendMessage();
-
-});
+.getElementById("chat")
+.appendChild(ai);
 
 
+},700);
 
-function quick(text){
-
-document.getElementById("input").value=text;
-
-sendMessage();
 
 }
 
 
 
-function openProfile(){
+function profile(){
 
 document
 .getElementById("modal")
@@ -653,7 +654,6 @@ document
 .style.display="none";
 
 }
-
 
 
 </script>

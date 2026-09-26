@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
 
 <meta charset="UTF-8">
@@ -7,25 +8,30 @@
 
 <title>Humooe AI</title>
 
+
 <style>
 
 *{
 box-sizing:border-box;
-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
 }
 
+
 body{
+
 margin:0;
 height:100vh;
 background:#050505;
 color:white;
 overflow:hidden;
+
 }
 
 
-/* фон */
+/* ===== АНИМИРОВАННЫЙ ФОН ===== */
 
-body:before{
+
+body::before{
 
 content:"";
 
@@ -33,59 +39,68 @@ position:fixed;
 inset:-200px;
 
 background:
-radial-gradient(circle at 20% 20%,#333,transparent 30%),
-radial-gradient(circle at 80% 80%,#222,transparent 30%);
 
-filter:blur(80px);
+radial-gradient(circle at 20% 20%,#333,transparent 25%),
+radial-gradient(circle at 80% 70%,#222,transparent 25%),
+radial-gradient(circle at 50% 50%,#111,transparent 30%);
 
-animation:bgmove 15s infinite alternate;
+animation:
+backgroundMove 15s infinite alternate;
 
 z-index:-1;
 
 }
 
 
-@keyframes bgmove{
+@keyframes backgroundMove{
 
 from{
 transform:translate(0,0);
 }
 
 to{
-transform:translate(50px,40px);
+transform:translate(60px,40px);
 }
 
 }
 
 
 
-/* приложение */
+/* ===== APP ===== */
+
 
 .app{
 
 height:100vh;
+
 display:flex;
+
 flex-direction:column;
 
 }
 
 
-/* верх */
+
+/* ===== HEADER ===== */
+
 
 .header{
 
-padding:25px;
-
 display:flex;
+
 justify-content:space-between;
+
 align-items:center;
+
+padding:25px;
 
 }
 
 
 .logo{
 
-font-size:25px;
+font-size:28px;
+
 font-weight:700;
 
 letter-spacing:-1px;
@@ -95,25 +110,30 @@ letter-spacing:-1px;
 
 .logo span{
 
-color:#aaa;
+color:#999;
 
 }
 
 
 
-.avatar{
+.profile{
 
-width:45px;
-height:45px;
+width:48px;
+
+height:48px;
 
 border-radius:50%;
 
-background:#ffffff15;
+background:
+rgba(255,255,255,.08);
 
-backdrop-filter:blur(20px);
+border:
+1px solid rgba(255,255,255,.15);
 
 display:flex;
+
 align-items:center;
+
 justify-content:center;
 
 cursor:pointer;
@@ -123,21 +143,23 @@ transition:.3s;
 }
 
 
-.avatar:active{
 
-transform:scale(.9);
+.profile:hover{
+
+transform:scale(1.1);
 
 }
 
 
 
-/* главный экран */
+/* ===== HOME ===== */
+
 
 .home{
 
 padding:25px;
 
-animation:show .7s;
+animation:show .6s;
 
 }
 
@@ -148,7 +170,14 @@ animation:show .7s;
 from{
 
 opacity:0;
+
 transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
 
 }
 
@@ -158,9 +187,11 @@ transform:translateY(20px);
 
 h1{
 
-font-size:38px;
+font-size:40px;
 
 line-height:1.1;
+
+margin:0;
 
 }
 
@@ -168,37 +199,47 @@ line-height:1.1;
 
 .subtitle{
 
-color:#aaa;
+color:#999;
 
 font-size:18px;
+
+margin-top:10px;
 
 }
 
 
 
+/* ===== CARDS ===== */
+
+
 .card{
 
-margin-top:25px;
+margin-top:30px;
 
 padding:25px;
 
-border-radius:25px;
+border-radius:30px;
 
-background:#ffffff10;
+background:
 
-border:1px solid #ffffff15;
+rgba(255,255,255,.06);
+
+border:
+
+1px solid rgba(255,255,255,.12);
 
 backdrop-filter:blur(20px);
 
 transition:.3s;
 
-}
+cursor:pointer;
 
+}
 
 
 .card:active{
 
-transform:scale(.97);
+transform:scale(.96);
 
 }
 
@@ -206,13 +247,15 @@ transform:scale(.97);
 
 .start{
 
+margin-top:20px;
+
 width:100%;
 
-padding:18px;
+height:55px;
 
 border:0;
 
-border-radius:20px;
+border-radius:25px;
 
 background:white;
 
@@ -226,7 +269,8 @@ font-weight:600;
 
 
 
-/* быстрые кнопки */
+/* ===== QUICK BUTTONS ===== */
+
 
 .quick{
 
@@ -234,32 +278,36 @@ display:flex;
 
 gap:10px;
 
-margin-top:20px;
+margin-top:25px;
 
-overflow:auto;
+overflow-x:auto;
 
 }
+
 
 
 .quick button{
 
-background:#ffffff10;
+padding:15px 20px;
+
+border-radius:20px;
+
+border:
+
+1px solid rgba(255,255,255,.15);
+
+background:
+
+rgba(255,255,255,.08);
 
 color:white;
-
-border:1px solid #ffffff15;
-
-padding:15px;
-
-border-radius:18px;
-
-white-space:nowrap;
 
 }
 
 
 
-/* чат */
+/* ===== CHAT ===== */
+
 
 .chat{
 
@@ -277,15 +325,29 @@ overflow:auto;
 
 .message{
 
-padding:15px;
-
-border-radius:20px;
-
-margin-bottom:12px;
-
-animation:show .4s;
-
 max-width:85%;
+
+padding:16px;
+
+border-radius:22px;
+
+margin-bottom:15px;
+
+animation:message .4s;
+
+}
+
+
+
+@keyframes message{
+
+from{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
 
 }
 
@@ -293,9 +355,16 @@ max-width:85%;
 
 .ai{
 
-background:#ffffff12;
+background:
+
+rgba(255,255,255,.08);
+
+border:
+
+1px solid rgba(255,255,255,.1);
 
 }
+
 
 
 .user{
@@ -310,7 +379,8 @@ color:black;
 
 
 
-/* низ */
+/* ===== INPUT ===== */
+
 
 .bottom{
 
@@ -328,15 +398,23 @@ gap:10px;
 
 flex:1;
 
-background:#ffffff12;
+height:55px;
 
-border:1px solid #ffffff20;
+border-radius:30px;
 
-border-radius:25px;
+border:
 
-padding:15px;
+1px solid rgba(255,255,255,.2);
+
+background:
+
+rgba(255,255,255,.08);
 
 color:white;
+
+padding:0 20px;
+
+font-size:16px;
 
 outline:none;
 
@@ -348,17 +426,24 @@ outline:none;
 
 width:55px;
 
+height:55px;
+
 border-radius:50%;
 
 border:0;
 
 background:white;
 
+color:black;
+
+font-size:22px;
+
 }
 
 
 
-/* профиль */
+/* ===== MODAL ===== */
+
 
 .modal{
 
@@ -366,7 +451,7 @@ position:fixed;
 
 inset:0;
 
-background:#000a;
+background:rgba(0,0,0,.75);
 
 display:none;
 
@@ -375,13 +460,14 @@ align-items:flex-end;
 }
 
 
-.sheet{
+
+.window{
 
 width:100%;
 
 background:#111;
 
-border-radius:30px 30px 0 0;
+border-radius:35px 35px 0 0;
 
 padding:30px;
 
@@ -403,17 +489,55 @@ transform:translateY(100%);
 
 
 
-.sheet button{
+.window input{
 
 width:100%;
 
-padding:16px;
+height:55px;
 
-margin-top:10px;
+margin-top:12px;
+
+border-radius:20px;
+
+border:1px solid #333;
+
+background:#050505;
+
+color:white;
+
+padding:15px;
+
+}
+
+
+
+.window button{
+
+width:100%;
+
+height:55px;
+
+margin-top:15px;
 
 border-radius:20px;
 
 border:0;
+
+background:white;
+
+color:black;
+
+font-size:16px;
+
+}
+
+
+
+.close{
+
+background:#333!important;
+
+color:white!important;
 
 }
 
@@ -437,11 +561,13 @@ Humooe <span>AI</span>
 </div>
 
 
-<div class="avatar" onclick="profile()">
+<div class="profile" onclick="openProfile()">
 👤
 </div>
 
+
 </div>
+
 
 
 
@@ -453,17 +579,19 @@ Humooe <span>AI</span>
 </h1>
 
 
-<p class="subtitle">
+<div class="subtitle">
 Ваш персональный AI-помощник
-</p>
+</div>
 
 
 
 <div class="card" onclick="openChat()">
 
+
 <h2>
 Новый чат
 </h2>
+
 
 <p>
 Начать разговор с Humooe AI
@@ -499,11 +627,12 @@ Humooe <span>AI</span>
 ✍️ Тексты
 </button>
 
-
 </div>
 
 
+
 </div>
+
 
 
 
@@ -514,23 +643,35 @@ Humooe <span>AI</span>
 <div class="message ai">
 
 Привет 👋
+
+<br><br>
+
 Я Humooe AI.
+Готов помочь.
 
 </div>
 
 
 </div>
+
+
 
 
 
 <div class="bottom" id="bottom">
 
 
-<input class="input" id="input" placeholder="Напишите...">
+<input
+class="input"
+id="input"
+placeholder="Напишите сообщение..."
+>
 
 
-<button class="send" onclick="send()">
+<button class="send" onclick="sendMessage()">
+
 ➤
+
 </button>
 
 
@@ -538,33 +679,42 @@ Humooe <span>AI</span>
 
 
 
-
 </div>
 
 
 
 
-<div class="modal" id="modal">
+
+<!-- ПРОФИЛЬ -->
 
 
-<div class="sheet">
+<div class="modal" id="profileModal">
+
+
+<div class="window">
+
 
 <h2>
-Профиль
+Аккаунт Humooe
 </h2>
 
 
-<button>
+<p>
+Войдите или создайте аккаунт
+</p>
+
+
+<button onclick="showLogin()">
 Войти
 </button>
 
 
-<button>
+<button onclick="showRegister()">
 Регистрация
 </button>
 
 
-<button onclick="closeProfile()">
+<button class="close" onclick="closeProfile()">
 Закрыть
 </button>
 
@@ -577,57 +727,148 @@ Humooe <span>AI</span>
 
 
 
+
+<!-- РЕГИСТРАЦИЯ -->
+
+
+<div class="modal" id="authModal">
+
+
+<div class="window">
+
+
+<h2 id="authTitle">
+Регистрация
+</h2>
+
+
+
+<input
+id="email"
+placeholder="Email"
+>
+
+
+
+<input
+id="password"
+type="password"
+placeholder="Пароль"
+>
+
+
+
+<button onclick="authAction()" id="authButton">
+
+Создать аккаунт
+
+</button>
+
+
+
+<button class="close" onclick="closeAuth()">
+
+Закрыть
+
+</button>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
 <script>
+
+
+// =======================
+// SUPABASE
+// =======================
+
+
+const SUPABASE_URL =
+"https://reaajdispyhngnqdjsio.supabase.co";
+
+
+const SUPABASE_KEY =
+"sb_publishable_1UwuGu3Ni-BHNhfzmHTkVQ_iY_NPqMM";
+
+
+
+const supabaseClient =
+supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
+);
+
+
+
+// =======================
+// ЧАТ
+// =======================
 
 
 function openChat(){
 
-document.getElementById("home").style.display="none";
+document
+.getElementById("home")
+.style.display="none";
 
-document.getElementById("chat").style.display="block";
 
-document.getElementById("bottom").style.display="flex";
+document
+.getElementById("chat")
+.style.display="block";
+
+
+document
+.getElementById("bottom")
+.style.display="flex";
 
 }
 
 
 
-function send(){
-
-let input=document.getElementById("input");
-
-if(!input.value)return;
+function sendMessage(){
 
 
-let div=document.createElement("div");
-
-div.className="message user";
-
-div.innerHTML=input.value;
+let input=
+document.getElementById("input");
 
 
-document
-.getElementById("chat")
-.appendChild(div);
+let text=
+input.value.trim();
+
+
+
+if(!text)return;
+
+
+
+addMessage(
+text,
+"user"
+);
 
 
 input.value="";
 
 
+
 setTimeout(()=>{
 
 
-let ai=document.createElement("div");
-
-ai.className="message ai";
-
-ai.innerHTML=
-"Humooe AI готов ответить 🚀";
-
-
-document
-.getElementById("chat")
-.appendChild(ai);
+addMessage(
+"🤖 Humooe AI получил сообщение.",
+"ai"
+);
 
 
 },700);
@@ -637,10 +878,54 @@ document
 
 
 
-function profile(){
+function addMessage(text,type){
+
+
+let div=
+document.createElement("div");
+
+
+div.className=
+"message "+type;
+
+
+div.innerHTML=text;
+
 
 document
-.getElementById("modal")
+.getElementById("chat")
+.appendChild(div);
+
+
+}
+
+
+
+
+document
+.getElementById("input")
+.addEventListener(
+"keydown",
+function(e){
+
+if(e.key==="Enter")
+sendMessage();
+
+});
+
+
+
+
+
+// =======================
+// ПРОФИЛЬ
+// =======================
+
+
+function openProfile(){
+
+document
+.getElementById("profileModal")
 .style.display="flex";
 
 }
@@ -650,10 +935,155 @@ document
 function closeProfile(){
 
 document
-.getElementById("modal")
+.getElementById("profileModal")
 .style.display="none";
 
 }
+
+
+
+
+
+// =======================
+// AUTH
+// =======================
+
+
+let mode="register";
+
+
+
+function showLogin(){
+
+mode="login";
+
+document
+.getElementById("authTitle")
+.innerHTML="Вход";
+
+
+document
+.getElementById("authButton")
+.innerHTML="Войти";
+
+
+closeProfile();
+
+
+document
+.getElementById("authModal")
+.style.display="flex";
+
+}
+
+
+
+function showRegister(){
+
+mode="register";
+
+document
+.getElementById("authTitle")
+.innerHTML="Регистрация";
+
+
+document
+.getElementById("authButton")
+.innerHTML="Создать аккаунт";
+
+
+closeProfile();
+
+
+document
+.getElementById("authModal")
+.style.display="flex";
+
+}
+
+
+
+function closeAuth(){
+
+document
+.getElementById("authModal")
+.style.display="none";
+
+}
+
+
+
+
+async function authAction(){
+
+
+let email=
+document.getElementById("email").value;
+
+
+let password=
+document.getElementById("password").value;
+
+
+
+if(mode==="register"){
+
+
+let {error}=
+
+await supabaseClient.auth.signUp({
+
+email,
+password
+
+});
+
+
+
+if(error)
+
+alert(error.message);
+
+else
+
+alert("Аккаунт создан!");
+
+
+
+}
+
+
+
+else{
+
+
+let {error}=
+
+await supabaseClient.auth.signInWithPassword({
+
+email,
+password
+
+});
+
+
+
+if(error)
+
+alert(error.message);
+
+else
+
+alert("Вы вошли!");
+
+
+
+}
+
+
+
+}
+
 
 
 </script>

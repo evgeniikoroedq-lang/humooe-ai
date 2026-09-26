@@ -1,60 +1,662 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Humooe AI</title>
 
 <style>
+
+*{
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
 body{
 margin:0;
 height:100vh;
+overflow:hidden;
+background:#050510;
+color:white;
+}
+
+
+/* АНИМИРОВАННЫЙ ФОН */
+
+.bg{
+position:fixed;
+inset:0;
+z-index:-1;
+overflow:hidden;
+}
+
+
+.light{
+position:absolute;
+border-radius:50%;
+filter:blur(90px);
+animation:move 12s infinite alternate;
+}
+
+
+.one{
+width:350px;
+height:350px;
+background:#7c3aed;
+top:-100px;
+left:-100px;
+}
+
+
+.two{
+width:400px;
+height:400px;
+background:#2563eb;
+right:-150px;
+bottom:-100px;
+animation-delay:3s;
+}
+
+
+.three{
+width:250px;
+height:250px;
+background:#c026d3;
+top:40%;
+left:40%;
+animation-delay:6s;
+}
+
+
+@keyframes move{
+
+from{
+transform:translate(0);
+}
+
+to{
+transform:translate(80px,60px);
+}
+
+}
+
+
+
+/* ОСНОВА */
+
+.app{
+height:100vh;
+display:flex;
+flex-direction:column;
+}
+
+
+
+/* ШАПКА */
+
+.header{
+
+padding:20px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+}
+
+
+.logo{
+
+font-size:28px;
+font-weight:900;
+
+}
+
+
+.logo span{
+
+color:#8b5cf6;
+
+}
+
+
+
+.profile{
+
+width:48px;
+height:48px;
+
+border-radius:50%;
+
+background:#ffffff20;
+
+backdrop-filter:blur(20px);
+
 display:flex;
 align-items:center;
 justify-content:center;
-background:#050510;
-color:white;
-font-family:Arial;
+
+cursor:pointer;
+
+animation:pulse 3s infinite;
+
 }
 
-.box{
-padding:40px;
-border-radius:30px;
-background:#ffffff15;
+
+
+@keyframes pulse{
+
+50%{
+
+transform:scale(1.1);
+
+box-shadow:0 0 40px #8b5cf6;
+
+}
+
+}
+
+
+
+/* AI */
+
+.core{
+
+display:flex;
+justify-content:center;
+
+}
+
+
+.ai{
+
+margin-top:10px;
+
+width:120px;
+height:120px;
+
+border-radius:50%;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+font-size:45px;
+
+background:
+linear-gradient(
+135deg,
+#8b5cf6,
+#2563eb
+);
+
+box-shadow:
+0 0 50px #7c3aed;
+
+animation:pulse 3s infinite;
+
+}
+
+
+
+/* ЧАТ */
+
+.chat{
+
+flex:1;
+
+overflow:auto;
+
+padding:20px;
+
+}
+
+
+
+.message{
+
+max-width:85%;
+
+padding:16px;
+
+border-radius:22px;
+
+margin-bottom:15px;
+
+animation:show .4s;
+
+}
+
+
+@keyframes show{
+
+from{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
+
+}
+
+
+
+.ai-msg{
+
+background:#ffffff18;
+
 backdrop-filter:blur(20px);
-text-align:center;
-box-shadow:0 0 50px #7c3aed;
+
 }
 
-h1{
-color:#8b5cf6;
+
+.user-msg{
+
+margin-left:auto;
+
+background:
+linear-gradient(
+135deg,
+#7c3aed,
+#2563eb
+);
+
 }
 
-button{
-padding:15px 30px;
+
+
+/* БЫСТРЫЕ КНОПКИ */
+
+
+.quick{
+
+display:flex;
+
+gap:10px;
+
+padding:10px;
+
+overflow:auto;
+
+}
+
+
+
+.quick button{
+
 border:0;
+
+padding:12px 18px;
+
 border-radius:30px;
-background:#8b5cf6;
+
+background:#ffffff20;
+
 color:white;
-font-size:18px;
+
 }
+
+
+
+/* ВВОД */
+
+
+.bottom{
+
+display:flex;
+
+gap:10px;
+
+padding:15px;
+
+}
+
+
+input{
+
+flex:1;
+
+height:55px;
+
+border-radius:30px;
+
+border:1px solid #ffffff30;
+
+background:#ffffff15;
+
+color:white;
+
+padding:0 20px;
+
+font-size:16px;
+
+outline:none;
+
+}
+
+
+
+.send{
+
+width:55px;
+
+height:55px;
+
+border-radius:50%;
+
+border:0;
+
+background:
+linear-gradient(
+135deg,
+#8b5cf6,
+#2563eb
+);
+
+color:white;
+
+font-size:22px;
+
+}
+
+
+
+/* ПРОФИЛЬ */
+
+
+.modal{
+
+position:fixed;
+
+inset:0;
+
+display:none;
+
+align-items:center;
+
+justify-content:center;
+
+background:#0009;
+
+}
+
+
+.card{
+
+width:90%;
+
+max-width:350px;
+
+padding:25px;
+
+border-radius:25px;
+
+background:#111827;
+
+}
+
+
+.card button{
+
+width:100%;
+
+padding:14px;
+
+margin-top:10px;
+
+border:0;
+
+border-radius:20px;
+
+background:#8b5cf6;
+
+color:white;
+
+}
+
+
 
 </style>
 
 </head>
 
+
 <body>
 
 
-<div class="box">
+<div class="bg">
 
-<h1>Humooe AI</h1>
-
-<p>Сайт работает 🚀</p>
-
-<button>
-Начать
-</button>
+<div class="light one"></div>
+<div class="light two"></div>
+<div class="light three"></div>
 
 </div>
+
+
+
+<div class="app">
+
+
+<div class="header">
+
+<div class="logo">
+Humooe <span>AI</span>
+</div>
+
+
+<div class="profile" onclick="openProfile()">
+👤
+</div>
+
+
+</div>
+
+
+
+
+<div class="core">
+
+<div class="ai">
+✦
+</div>
+
+</div>
+
+
+
+<div class="chat" id="chat">
+
+
+<div class="message ai-msg">
+
+👋 Привет! Я Humooe AI.
+
+<br><br>
+
+Задай свой вопрос.
+
+</div>
+
+
+</div>
+
+
+
+<div class="quick">
+
+<button onclick="quick('Реши задачу')">
+🧮 Задача
+</button>
+
+
+<button onclick="quick('Объясни тему')">
+📚 Учёба
+</button>
+
+
+<button onclick="quick('Напиши текст')">
+✍️ Текст
+</button>
+
+
+</div>
+
+
+
+<div class="bottom">
+
+
+<input id="input" placeholder="Напишите вопрос...">
+
+
+<button class="send" onclick="sendMessage()">
+➤
+</button>
+
+
+</div>
+
+
+
+</div>
+
+
+
+<div class="modal" id="modal">
+
+
+<div class="card">
+
+<h2>
+👤 Профиль
+</h2>
+
+
+<p>
+Humooe AI аккаунт
+</p>
+
+
+<button>
+Войти
+</button>
+
+
+<button>
+Регистрация
+</button>
+
+
+<button onclick="closeProfile()">
+Закрыть
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+<script>
+
+
+function addMessage(text,type){
+
+let box=document.createElement("div");
+
+box.className="message "+type;
+
+box.innerHTML=text;
+
+document
+.getElementById("chat")
+.appendChild(box);
+
+
+}
+
+
+
+function sendMessage(){
+
+let input=document.getElementById("input");
+
+let text=input.value.trim();
+
+
+if(!text)return;
+
+
+addMessage(text,"user-msg");
+
+
+input.value="";
+
+
+setTimeout(()=>{
+
+
+addMessage(
+"🤖 Humooe AI готов. Подключение настоящей нейросети добавим следующим шагом.",
+"ai-msg"
+);
+
+
+},800);
+
+
+}
+
+
+
+document
+.getElementById("input")
+.addEventListener(
+"keydown",
+function(e){
+
+if(e.key==="Enter")
+sendMessage();
+
+});
+
+
+
+function quick(text){
+
+document.getElementById("input").value=text;
+
+sendMessage();
+
+}
+
+
+
+function openProfile(){
+
+document
+.getElementById("modal")
+.style.display="flex";
+
+}
+
+
+
+function closeProfile(){
+
+document
+.getElementById("modal")
+.style.display="none";
+
+}
+
+
+
+</script>
 
 
 </body>

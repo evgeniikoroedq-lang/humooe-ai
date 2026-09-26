@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -12,7 +10,7 @@
 
 *{
 box-sizing:border-box;
-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
 
 body{
@@ -23,362 +21,250 @@ color:white;
 overflow:hidden;
 }
 
-
-/* PREMIUM BACKGROUND */
-
 body:before{
-
 content:"";
-
 position:fixed;
-inset:-200px;
-
+inset:-150px;
 background:
 radial-gradient(circle at 20% 20%,#444,transparent 30%),
-radial-gradient(circle at 80% 70%,#222,transparent 30%);
-
+radial-gradient(circle at 80% 80%,#222,transparent 30%);
 filter:blur(80px);
-
-animation:bg 15s infinite alternate;
-
+animation:bgmove 12s infinite alternate;
 z-index:-1;
-
 }
 
-
-@keyframes bg{
-
-from{
-transform:translate(0);
+@keyframes bgmove{
+from{transform:translate(0)}
+to{transform:translate(50px,40px)}
 }
-
-to{
-transform:translate(60px,40px);
-}
-
-}
-
-
-
-/* APP */
 
 .app{
-
 height:100vh;
 display:flex;
 flex-direction:column;
-
 }
 
 
-
-/* HEADER */
-
 .header{
-
 padding:25px;
-
 display:flex;
 justify-content:space-between;
 align-items:center;
-
 }
 
 
 .logo{
-
 font-size:28px;
 font-weight:700;
-
 }
-
 
 .logo span{
-
 color:#888;
-
 }
-
 
 
 .profile{
-
 width:48px;
 height:48px;
-
 border-radius:50%;
-
 background:#ffffff15;
-
-border:1px solid #ffffff20;
-
+border:1px solid #ffffff25;
 display:flex;
-
 align-items:center;
-
 justify-content:center;
-
 cursor:pointer;
-
 transition:.3s;
-
 }
-
 
 .profile:active{
-
 transform:scale(.9);
-
 }
 
 
-
-/* HOME */
 
 .home{
-
 padding:25px;
-
-animation:fade .5s;
-
+animation:show .5s;
 }
 
 
-@keyframes fade{
-
+@keyframes show{
 from{
-
 opacity:0;
 transform:translateY(20px);
-
 }
-
 to{
-
 opacity:1;
-
 }
-
 }
-
 
 
 h1{
-
 font-size:40px;
-
 line-height:1.1;
-
 margin:0;
-
 }
 
 
 .subtitle{
-
-color:#999;
-
+color:#aaa;
 font-size:18px;
-
-margin-top:12px;
-
+margin-top:10px;
 }
 
-
-
-/* CARD */
 
 .card{
-
-margin-top:35px;
-
+margin-top:30px;
 padding:25px;
-
 border-radius:30px;
-
-background:
-rgba(255,255,255,.07);
-
-border:
-1px solid rgba(255,255,255,.15);
-
-backdrop-filter:blur(25px);
-
+background:#ffffff10;
+border:1px solid #ffffff20;
+backdrop-filter:blur(20px);
 }
-
-
-
-.card h2{
-
-margin-top:0;
-
-}
-
 
 
 .start{
-
 width:100%;
-
 height:55px;
-
-border-radius:25px;
-
 border:0;
-
+border-radius:25px;
 background:white;
-
 color:black;
-
 font-size:18px;
-
 font-weight:600;
-
 margin-top:20px;
-
 }
 
 
-
-/* QUICK */
-
 .quick{
-
 display:flex;
-
 gap:10px;
-
+margin-top:20px;
 overflow:auto;
-
-margin-top:25px;
-
 }
 
 
 .quick button{
-
 padding:15px 20px;
-
 border-radius:20px;
-
 background:#ffffff10;
-
 border:1px solid #ffffff20;
-
 color:white;
-
 }
 
-
-
-/* CHAT */
 
 .chat{
-
 display:none;
-
 flex:1;
-
 overflow:auto;
-
 padding:20px;
-
 }
-
 
 
 .message{
-
-padding:16px;
-
+padding:15px;
 border-radius:22px;
-
 max-width:85%;
-
 margin-bottom:15px;
-
-animation:fade .3s;
-
+animation:show .3s;
 }
-
 
 
 .ai{
-
 background:#ffffff12;
-
 }
-
 
 
 .user{
-
 background:white;
-
 color:black;
-
 margin-left:auto;
-
 }
 
 
-
-/* INPUT */
 
 .bottom{
-
 display:none;
-
 padding:15px;
-
 gap:10px;
-
 }
-
 
 
 .input{
-
 flex:1;
-
 height:55px;
-
 border-radius:30px;
-
-background:#ffffff10;
-
 border:1px solid #ffffff25;
-
+background:#ffffff10;
 color:white;
-
 padding:0 20px;
-
 outline:none;
-
 }
-
 
 
 .send{
-
 width:55px;
-
 height:55px;
-
 border-radius:50%;
-
 border:0;
-
 background:white;
-
-font-size:20px;
-
 }
+
+
+
+.modal{
+position:fixed;
+inset:0;
+background:#000b;
+display:none;
+align-items:flex-end;
+z-index:10;
+}
+
+
+.window{
+width:100%;
+background:#111;
+padding:30px;
+border-radius:35px 35px 0 0;
+animation:up .3s;
+}
+
+
+@keyframes up{
+from{
+transform:translateY(100%);
+}
+}
+
+
+
+.window input{
+width:100%;
+height:55px;
+margin-top:12px;
+border-radius:20px;
+border:1px solid #333;
+background:#050505;
+color:white;
+padding:15px;
+}
+
+
+.window button{
+width:100%;
+height:55px;
+margin-top:12px;
+border-radius:20px;
+border:0;
+background:white;
+color:black;
+}
+
 
 </style>
 
 </head>
-
 
 <body>
 
@@ -388,237 +274,136 @@ font-size:20px;
 
 <div class="header">
 
-
 <div class="logo">
-
 Humooe <span>AI</span>
-
 </div>
-
 
 
 <div class="profile" onclick="openProfile()">
-
 👤
-
 </div>
 
 
 </div>
-
-
-
 
 
 <div class="home" id="home">
 
 
 <h1>
-
 Добрый вечер 👋
-
 </h1>
 
 
-
 <div class="subtitle">
-
-Ваш персональный AI-помощник
-
+Ваш персональный AI помощник
 </div>
 
 
-
-
-<div class="card" onclick="openChat()">
+<div class="card">
 
 
 <h2>
-
 Новый чат
-
 </h2>
 
 
 <p>
-
 Начать разговор с Humooe AI
-
 </p>
 
 
-
-<button class="start">
-
+<button class="start" onclick="openChat()">
 Начать
-
 </button>
 
 
 </div>
 
 
-
-
-
 <h3>
-
 Быстрый доступ
-
 </h3>
-
 
 
 <div class="quick">
 
-
-<button>
-🧮 Задачи
-</button>
-
-
-<button>
-📚 Учёба
-</button>
-
-
-<button>
-✍️ Тексты
-</button>
-
+<button>🧮 Задачи</button>
+<button>📚 Учёба</button>
+<button>✍️ Тексты</button>
 
 </div>
 
 
 </div>
-
-
-
 
 
 <div class="chat" id="chat">
 
-
 <div class="message ai">
-
-Привет 👋
-
-<br><br>
-
+Привет 👋<br><br>
 Я Humooe AI.
-
 </div>
 
 
 </div>
-
-
-
 
 
 <div class="bottom" id="bottom">
 
 
-<input
-
-class="input"
-
-id="input"
-
-placeholder="Напишите сообщение..."
-
->
+<input id="input" class="input" placeholder="Напишите сообщение...">
 
 
-
-<button
-
-class="send"
-
-onclick="sendMessage()"
-
->
-
+<button class="send" onclick="sendMessage()">
 ➤
-
 </button>
 
 
 </div>
 
 
-
-
-
 </div>
-
-
-
-
-
-
 
 <!-- ПРОФИЛЬ -->
 
-
 <div class="modal" id="profileModal">
-
 
 <div class="window">
 
-
 <h2>
-Профиль
+Аккаунт
 </h2>
 
 
 <p id="userInfo">
-
 Вы не вошли
-
 </p>
 
 
-
 <button onclick="showLogin()">
-
 Войти
-
 </button>
-
 
 
 <button onclick="showRegister()">
-
 Регистрация
-
 </button>
-
 
 
 <button onclick="logout()">
-
 Выйти
-
 </button>
-
 
 
 <button onclick="closeProfile()">
-
 Закрыть
-
 </button>
 
 
 </div>
 
-
 </div>
-
-
-
-
 
 
 
@@ -628,65 +413,31 @@ onclick="sendMessage()"
 
 <div class="modal" id="authModal">
 
-
 <div class="window">
 
 
 <h2 id="authTitle">
-
 Регистрация
-
 </h2>
 
 
+<input id="email" placeholder="Email">
 
 
-<input
-
-id="email"
-
-placeholder="Email"
-
->
+<input id="password" type="password" placeholder="Пароль">
 
 
-
-<input
-
-id="password"
-
-type="password"
-
-placeholder="Пароль"
-
->
-
-
-
-<button
-
-onclick="authAction()"
-
-id="authButton"
-
->
-
+<button onclick="authAction()" id="authButton">
 Создать аккаунт
-
 </button>
-
 
 
 <button onclick="closeAuth()">
-
 Закрыть
-
 </button>
 
 
-
 </div>
-
 
 </div>
 
@@ -694,12 +445,14 @@ id="authButton"
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script>
 
 
-// =========================
+<script>
+
+
+// =======================
 // SUPABASE
-// =========================
+// =======================
 
 
 const SUPABASE_URL =
@@ -718,52 +471,44 @@ SUPABASE_KEY
 
 
 
-
-// =========================
+// =======================
 // CHAT
-// =========================
+// =======================
 
 
 function openChat(){
 
-document
-.getElementById("home")
+
+document.getElementById("home")
 .style.display="none";
 
 
-document
-.getElementById("chat")
+document.getElementById("chat")
 .style.display="block";
 
 
-document
-.getElementById("bottom")
+document.getElementById("bottom")
 .style.display="flex";
 
 
 loadHistory();
 
-}
 
+}
 
 
 
 function addMessage(text,type){
 
 
-let div =
-document.createElement("div");
+let div=document.createElement("div");
+
+div.className="message "+type;
+
+div.innerHTML=text;
 
 
-div.className =
-"message " + type;
-
-
-div.innerHTML = text;
-
-
-document
-.getElementById("chat")
+document.getElementById("chat")
 .appendChild(div);
 
 
@@ -771,20 +516,16 @@ document
 
 
 
-
 async function sendMessage(){
 
 
-let input =
-document.getElementById("input");
+let input=document.getElementById("input");
 
 
-let text =
-input.value.trim();
+let text=input.value.trim();
 
 
 if(!text)return;
-
 
 
 addMessage(text,"user");
@@ -794,23 +535,21 @@ input.value="";
 
 
 
-// проверяем пользователя
-
-const {
+let {
 
 data:{
 user
 
 }
 
-}= await supabaseClient.auth.getUser();
+}=await supabaseClient.auth.getUser();
 
 
 
 if(!user){
 
 addMessage(
-"Сначала войдите в аккаунт 👤",
+"Войдите в аккаунт, чтобы сохранять историю",
 "ai"
 );
 
@@ -818,9 +557,6 @@ return;
 
 }
 
-
-
-// сохраняем сообщение
 
 
 await supabaseClient
@@ -837,23 +573,14 @@ role:"user"
 
 
 
-
-// временный ответ
-
 let answer =
-"🤖 Humooe AI получил сообщение. Скоро подключим настоящий AI.";
+"🤖 Humooe AI получил сообщение.";
 
 
 
-addMessage(
-answer,
-"ai"
-);
+addMessage(answer,"ai");
 
 
-
-
-// сохраняем ответ
 
 await supabaseClient
 .from("chats")
@@ -868,28 +595,24 @@ role:"ai"
 });
 
 
+
 }
 
 
-
-
-// =========================
-// HISTORY
-// =========================
 
 
 
 async function loadHistory(){
 
 
-const {
+let {
 
 data:{
 user
 
 }
 
-}= await supabaseClient.auth.getUser();
+}=await supabaseClient.auth.getUser();
 
 
 
@@ -899,42 +622,25 @@ if(!user)return;
 
 let {
 
-data,
-error
+data
 
-}= await supabaseClient
-
+}=await supabaseClient
 .from("chats")
-
 .select("*")
-
-.eq(
-"user_id",
-user.id
-)
-
-.order(
-"created_at",
-{
-ascending:true
-}
-);
+.eq("user_id",user.id)
+.order("created_at");
 
 
 
-if(error)return;
-
+if(!data)return;
 
 
 data.forEach(item=>{
 
 
 addMessage(
-
 item.message,
-
 item.role
-
 );
 
 
@@ -946,16 +652,14 @@ item.role
 
 
 
-
-// =========================
+// =======================
 // PROFILE
-// =========================
+// =======================
 
 
 function openProfile(){
 
-document
-.getElementById("profileModal")
+document.getElementById("profileModal")
 .style.display="flex";
 
 
@@ -967,8 +671,7 @@ checkUser();
 
 function closeProfile(){
 
-document
-.getElementById("profileModal")
+document.getElementById("profileModal")
 .style.display="none";
 
 }
@@ -976,37 +679,34 @@ document
 
 
 
-// =========================
+// =======================
 // AUTH
-// =========================
+// =======================
 
 
-
-let authMode="register";
+let mode="register";
 
 
 
 function showLogin(){
 
-authMode="login";
+mode="login";
 
 
-document
-.getElementById("authTitle")
+document.getElementById("authTitle")
 .innerHTML="Вход";
 
 
-document
-.getElementById("authButton")
+document.getElementById("authButton")
 .innerHTML="Войти";
 
 
 closeProfile();
 
 
-document
-.getElementById("authModal")
+document.getElementById("authModal")
 .style.display="flex";
+
 
 }
 
@@ -1015,25 +715,23 @@ document
 
 function showRegister(){
 
-authMode="register";
+mode="register";
 
 
-document
-.getElementById("authTitle")
+document.getElementById("authTitle")
 .innerHTML="Регистрация";
 
 
-document
-.getElementById("authButton")
+document.getElementById("authButton")
 .innerHTML="Создать аккаунт";
 
 
 closeProfile();
 
 
-document
-.getElementById("authModal")
+document.getElementById("authModal")
 .style.display="flex";
+
 
 }
 
@@ -1042,8 +740,7 @@ document
 
 function closeAuth(){
 
-document
-.getElementById("authModal")
+document.getElementById("authModal")
 .style.display="none";
 
 }
@@ -1054,36 +751,24 @@ document
 async function authAction(){
 
 
-
-let email =
-document
-.getElementById("email")
-.value;
+let email=
+document.getElementById("email").value;
 
 
-let password =
-document
-.getElementById("password")
-.value;
+let password=
+document.getElementById("password").value;
 
 
 
-if(authMode==="register"){
+if(mode==="register"){
 
 
-
-let {
-
-error
-
-}= await supabaseClient.auth.signUp({
+let {error}=await supabaseClient.auth.signUp({
 
 email,
-
 password
 
 });
-
 
 
 if(error)
@@ -1092,30 +777,22 @@ alert(error.message);
 
 else
 
-alert(
-"Аккаунт создан!"
-);
-
+alert("Аккаунт создан");
 
 
 }
 
-else {
 
 
+else{
 
-let {
 
-error
-
-}= await supabaseClient.auth.signInWithPassword({
+let {error}=await supabaseClient.auth.signInWithPassword({
 
 email,
-
 password
 
 });
-
 
 
 if(error)
@@ -1124,10 +801,7 @@ alert(error.message);
 
 else
 
-alert(
-"Вы вошли!"
-);
-
+alert("Вы вошли");
 
 
 }
@@ -1142,59 +816,56 @@ closeAuth();
 
 
 
-
 async function checkUser(){
 
 
-const {
+let {
 
 data:{
 user
 
 }
 
-}= await supabaseClient.auth.getUser();
+}=await supabaseClient.auth.getUser();
 
 
 
-let box =
-document.getElementById("userInfo");
+let box=document.getElementById("userInfo");
 
 
 
 if(user){
 
-box.innerHTML =
-"Вы вошли:<br>" + user.email;
+box.innerHTML=
+"Вы вошли:<br>"+user.email;
+
 
 }
 
 else{
 
-box.innerHTML =
+
+box.innerHTML=
 "Вы не вошли";
 
-}
-
-
 
 }
+
+
+}
+
 
 
 
 
 async function logout(){
 
-
 await supabaseClient.auth.signOut();
 
-
-alert(
-"Вы вышли"
-);
-
+alert("Вы вышли");
 
 }
+
 
 
 
@@ -1206,7 +877,6 @@ document
 function(e){
 
 if(e.key==="Enter")
-
 sendMessage();
 
 });
@@ -1219,5 +889,3 @@ sendMessage();
 </body>
 
 </html>
-
-  

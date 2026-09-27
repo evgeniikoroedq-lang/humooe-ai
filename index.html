@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
 
 <meta charset="UTF-8">
@@ -7,16 +8,16 @@
 
 <title>Humooe AI</title>
 
+
 <style>
+
 
 *{
 box-sizing:border-box;
 font-family:
 Inter,
 system-ui,
--apple-system,
-BlinkMacSystemFont,
-"Segoe UI",
+Arial,
 sans-serif;
 }
 
@@ -32,32 +33,39 @@ overflow:hidden;
 }
 
 
-body:before{
+
+body::before{
 
 content:"";
 position:fixed;
-width:500px;
-height:500px;
-background:radial-gradient(circle,#673ab7,transparent 70%);
-top:-200px;
-right:-200px;
+width:450px;
+height:450px;
+
+background:
+radial-gradient(circle,#7c3aed,transparent 70%);
+
+top:-150px;
+right:-150px;
+
 filter:blur(80px);
-animation:moveGlow 10s infinite alternate;
+
+animation:move 8s infinite alternate;
 
 }
 
 
-@keyframes moveGlow{
+@keyframes move{
 
 from{
-transform:translate(0,0);
+transform:translate(0);
 }
 
 to{
-transform:translate(-100px,150px);
+transform:translate(-80px,120px);
 }
 
 }
+
 
 
 
@@ -71,13 +79,16 @@ flex-direction:column;
 
 
 
-.header{
+
+header{
 
 height:80px;
-padding:20px;
+
 display:flex;
 align-items:center;
 justify-content:space-between;
+
+padding:20px;
 
 }
 
@@ -85,10 +96,11 @@ justify-content:space-between;
 
 .logo{
 
-font-size:26px;
-font-weight:800;
+font-size:28px;
+font-weight:900;
 
 }
+
 
 
 .logo span{
@@ -99,45 +111,54 @@ color:#8b5cf6;
 
 
 
-.avatar{
+
+.account{
 
 width:45px;
 height:45px;
+
 border-radius:50%;
+
 background:#ffffff15;
+
 border:1px solid #ffffff20;
+
 display:flex;
 align-items:center;
 justify-content:center;
+
 cursor:pointer;
-transition:.3s;
-
-}
-
-
-.avatar:hover{
-
-transform:scale(1.1);
 
 }
 
 
 
 
-
-.page{
+main{
 
 flex:1;
-padding:20px;
+
 overflow:auto;
+
+padding:20px;
 
 }
 
 
 
-.hero{
+.screen{
 
-animation:show .6s;
+display:none;
+
+animation:show .4s;
+
+}
+
+
+
+.screen.active{
+
+display:block;
 
 }
 
@@ -148,7 +169,7 @@ animation:show .6s;
 from{
 
 opacity:0;
-transform:translateY(30px);
+transform:translateY(20px);
 
 }
 
@@ -162,11 +183,15 @@ opacity:1;
 
 
 
+
+
 .hero h1{
 
 font-size:42px;
+
 line-height:1.1;
-margin:20px 0 10px;
+
+margin-top:40px;
 
 }
 
@@ -175,34 +200,46 @@ margin:20px 0 10px;
 .hero p{
 
 color:#999;
-font-size:17px;
+
+font-size:18px;
 
 }
 
 
 
 
-.ai-core{
+
+.core{
 
 width:150px;
+
 height:150px;
-margin:40px auto;
+
 border-radius:50%;
+
+margin:40px auto;
+
 
 background:
 
 radial-gradient(circle,
-white,
+#fff,
 #8b5cf6,
 #111);
 
+
 display:flex;
+
 align-items:center;
+
 justify-content:center;
 
-font-size:50px;
+
+font-size:45px;
+
 
 animation:pulse 3s infinite;
+
 
 }
 
@@ -214,8 +251,7 @@ animation:pulse 3s infinite;
 
 transform:scale(1);
 
-box-shadow:
-0 0 20px #8b5cf6;
+box-shadow:0 0 20px #8b5cf6;
 
 }
 
@@ -224,12 +260,12 @@ box-shadow:
 
 transform:scale(1.08);
 
-box-shadow:
-0 0 70px #8b5cf6;
+box-shadow:0 0 80px #8b5cf6;
 
 }
 
 }
+
 
 
 
@@ -237,12 +273,14 @@ box-shadow:
 .card{
 
 background:#ffffff10;
+
 border:1px solid #ffffff20;
+
 backdrop-filter:blur(20px);
 
 border-radius:30px;
 
-padding:20px;
+padding:25px;
 
 margin-bottom:20px;
 
@@ -250,94 +288,40 @@ margin-bottom:20px;
 
 
 
-.primary{
+button{
 
-width:100%;
 height:55px;
 
 border:none;
+
 border-radius:30px;
 
+width:100%;
+
+font-size:16px;
+
+cursor:pointer;
+
+}
+
+
+
+.primary{
+
 background:white;
+
 color:black;
 
-font-size:17px;
-
-cursor:pointer;
-
-transition:.3s;
-
-}
-
-
-
-.primary:active{
-
-transform:scale(.95);
-
 }
 
 
 
 
-.bottom{
 
-height:75px;
+.chat-box{
 
-background:#0b0b0bdd;
+height:calc(100vh - 230px);
 
-border-top:1px solid #ffffff15;
-
-display:flex;
-justify-content:space-around;
-align-items:center;
-
-}
-
-
-
-.nav{
-
-color:#999;
-font-size:13px;
-text-align:center;
-cursor:pointer;
-
-}
-
-
-
-.nav b{
-
-display:block;
-font-size:24px;
-
-}
-
-
-
-.nav.active{
-
-color:white;
-
-}
-
-
-
-
-.chat{
-
-display:none;
-height:100%;
-flex-direction:column;
-
-}
-
-
-
-.messages{
-
-flex:1;
 overflow:auto;
 
 }
@@ -346,10 +330,13 @@ overflow:auto;
 
 .message{
 
-padding:15px;
-border-radius:22px;
-margin-bottom:15px;
 max-width:85%;
+
+padding:15px;
+
+border-radius:22px;
+
+margin-bottom:15px;
 
 animation:show .3s;
 
@@ -368,31 +355,57 @@ background:#ffffff12;
 .user{
 
 background:white;
+
 color:black;
+
 margin-left:auto;
 
 }
 
 
 
-.input-box{
+.copy{
+
+margin-top:10px;
+
+background:#ffffff15;
+
+color:white;
+
+border:1px solid #ffffff20;
+
+height:35px;
+
+width:auto;
+
+padding:0 15px;
+
+}
+
+
+
+
+.input-area{
 
 display:flex;
+
 gap:10px;
 
 }
 
 
 
-.input-box input{
+.input-area input{
 
 flex:1;
+
 height:55px;
 
 border-radius:30px;
 
-background:#ffffff10;
 border:1px solid #ffffff20;
+
+background:#ffffff10;
 
 color:white;
 
@@ -407,65 +420,292 @@ font-size:16px;
 .send{
 
 width:55px;
-height:55px;
-border-radius:50%;
-border:none;
+
+}
+
+
+
+
+
+nav{
+
+height:75px;
+
+display:flex;
+
+justify-content:space-around;
+
+align-items:center;
+
+background:#0b0b0bee;
+
+border-top:1px solid #ffffff15;
+
+}
+
+
+
+.nav-item{
+
+color:#888;
+
+text-align:center;
+
+cursor:pointer;
+
+font-size:13px;
+
+}
+
+
+
+.nav-item b{
+
+display:block;
+
+font-size:23px;
+
+}
+
+
+
+.active-nav{
+
+color:white;
 
 }
 
 
 
 </style>
-<!-- ПРОФИЛЬ -->
 
-<div class="modal" id="profileModal">
 
-<div class="window">
+</head>
 
-<h2>👤 Профиль</h2>
 
-<p id="profileText">
+<body>
+
+
+
+<div class="app">
+
+
+
+<header>
+
+<div class="logo">
+Humooe <span>AI</span>
+</div>
+
+
+<div class="account" onclick="openProfile()">
+👤
+</div>
+
+
+</header>
+
+
+
+
+
+<main>
+
+
+
+<section class="screen active" id="home">
+
+
+<div class="hero">
+
+
+<h1>
+Ваш AI<br>
+помощник
+</h1>
+
+
+<p>
+Создавайте идеи, решайте задачи и общайтесь.
+</p>
+
+
+
+<div class="core">
+✦
+</div>
+
+
+
+
+<div class="card">
+
+
+<h2>
+Начать работу
+</h2>
+
+
+<p>
+Откройте новый разговор с Humooe AI.
+</p>
+
+
+<button class="primary"
+onclick="openChat()">
+
+Начать чат
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<section class="screen" id="chat">
+
+
+<div class="chat-box" id="messages">
+
+
+<div class="message ai">
+
+Привет 👋<br>
+Я Humooe AI.
+
+</div>
+
+
+</div>
+
+
+
+<div class="input-area">
+
+
+<input
+id="input"
+placeholder="Сообщение..."
+>
+
+
+<button class="send primary"
+onclick="sendMessage()">
+
+➤
+
+</button>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<section class="screen" id="profile">
+
+
+<div class="card">
+
+
+<h2>
+Профиль
+</h2>
+
+
+<p id="userText">
 Вы не вошли
 </p>
 
 
-<button class="primary" onclick="openLogin()">
+<button class="primary"
+onclick="openLogin()">
+
 Войти
+
 </button>
 
 
-<button class="primary" onclick="openRegister()">
+<button class="primary"
+onclick="openRegister()">
+
 Регистрация
-</button>
 
-
-<button 
-id="logoutButton"
-class="primary"
-onclick="logout()"
-style="display:none">
-
-Выйти
-
-</button>
-
-
-<button class="primary" onclick="closeProfile()">
-Закрыть
 </button>
 
 
 </div>
 
+
+</section>
+
+
+
+
+</main>
+
+
+
+
+<nav>
+
+
+<div class="nav-item active-nav"
+onclick="showScreen('home')">
+
+<b>🏠</b>
+Главная
+
 </div>
 
 
+<div class="nav-item"
+onclick="openChat()">
+
+<b>💬</b>
+Чат
+
+</div>
+
+
+<div class="nav-item"
+onclick="showScreen('profile')">
+
+<b>👤</b>
+Профиль
+
+</div>
+
+
+</nav>
 
 
 
-<!-- ВХОД / РЕГИСТРАЦИЯ -->
 
-<div class="modal" id="authModal">
+</div>
+
+<!-- ОКНА АККАУНТА -->
+
+
+<div id="authModal" class="modal">
+
 
 <div class="window">
 
@@ -475,32 +715,27 @@ style="display:none">
 </h2>
 
 
-<input 
-id="email"
-class="authInput"
+<input id="email"
 placeholder="Email">
 
 
-<input 
-id="password"
-class="authInput"
+<input id="password"
 type="password"
 placeholder="Пароль">
 
 
-<button 
-class="primary"
+
+<button class="primary"
 onclick="authAction()"
-id="authBtn">
+id="authButton">
 
 Войти
 
 </button>
 
 
-<button 
-class="primary"
-onclick="closeAuth()">
+
+<button onclick="closeAuth()">
 
 Закрыть
 
@@ -509,8 +744,8 @@ onclick="closeAuth()">
 
 </div>
 
-</div>
 
+</div>
 
 
 
@@ -522,6 +757,7 @@ onclick="closeAuth()">
 .modal{
 
 position:fixed;
+
 inset:0;
 
 background:#000b;
@@ -530,7 +766,7 @@ display:none;
 
 align-items:flex-end;
 
-z-index:20;
+z-index:50;
 
 }
 
@@ -542,35 +778,17 @@ width:100%;
 
 background:#111;
 
-border-radius:35px 35px 0 0;
-
 padding:30px;
 
-animation:up .4s;
+border-radius:35px 35px 0 0;
+
+animation:up .3s;
 
 }
 
 
 
-@keyframes up{
-
-from{
-
-transform:translateY(100%);
-
-}
-
-to{
-
-transform:none;
-
-}
-
-}
-
-
-
-.authInput{
+.window input{
 
 width:100%;
 
@@ -594,48 +812,19 @@ font-size:16px;
 
 
 
+@keyframes up{
 
-.copy{
+from{
 
-margin-top:10px;
-
-background:#ffffff15;
-
-border:1px solid #ffffff20;
-
-color:white;
-
-padding:8px 15px;
-
-border-radius:20px;
-
-cursor:pointer;
-
-font-size:14px;
+transform:translateY(100%);
 
 }
 
+to{
 
+transform:none;
 
-.toast{
-
-position:fixed;
-
-bottom:100px;
-
-left:50%;
-
-transform:translateX(-50%);
-
-background:white;
-
-color:black;
-
-padding:12px 25px;
-
-border-radius:30px;
-
-display:none;
+}
 
 }
 
@@ -647,103 +836,77 @@ display:none;
 
 
 
-
-<div class="toast" id="toast">
-
-✓ Скопировано
-
-</div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
 
 <script>
 
 
-// =======================
+// =====================
 // SUPABASE
-// =======================
+// =====================
+
 
 
 const SUPABASE_URL =
-"https://https://reaajdispyhngnqdjsio.supabase.co";
+
+"https://reaajdispyhngnqdjsio.supabase.co";
+
 
 
 const SUPABASE_KEY =
+
 "sb_publishable_1UwuGu3Ni-BHNhfzmHTkVQ_iY_NPqMM";
 
 
 
+
+
 const supabaseClient =
+
 supabase.createClient(
+
 SUPABASE_URL,
+
 SUPABASE_KEY
+
 );
 
 
 
 
 
-let authMode="login";
+let mode="login";
 
 
 
 
 
-// =======================
-// PROFILE
-// =======================
 
 
-function openProfile(){
-
-profileModal.style.display="flex";
-
-checkUser();
-
-}
+// =====================
+// ЭКРАНЫ
+// =====================
 
 
 
-function closeProfile(){
-
-profileModal.style.display="none";
-
-}
+function showScreen(id){
 
 
+document
+.querySelectorAll(".screen")
+.forEach(x=>{
 
+x.classList.remove("active");
 
-async function checkUser(){
-
-
-const {
-
-data:{user}
-
-}=await supabaseClient.auth.getUser();
+});
 
 
 
-if(user){
-
-profileText.innerHTML=
-"👤 "+user.email;
-
-
-logoutButton.style.display="block";
-
-
-}else{
-
-
-profileText.innerHTML=
-"Вы не вошли";
-
-
-logoutButton.style.display="none";
-
-
-}
-
+document
+.getElementById(id)
+.classList.add("active");
 
 
 }
@@ -752,43 +915,62 @@ logoutButton.style.display="none";
 
 
 
-// =======================
-// AUTH
-// =======================
+
+function openChat(){
+
+showScreen("chat");
+
+loadHistory();
+
+}
+
+
+
+
+
+// =====================
+// АККАУНТ
+// =====================
+
 
 
 function openLogin(){
 
-authMode="login";
+
+mode="login";
+
 
 authTitle.innerHTML="Вход";
 
-authBtn.innerHTML="Войти";
 
+authButton.innerHTML="Войти";
 
-closeProfile();
 
 authModal.style.display="flex";
 
+
 }
+
+
 
 
 
 function openRegister(){
 
-authMode="register";
+
+mode="register";
+
 
 authTitle.innerHTML="Регистрация";
 
-authBtn.innerHTML="Создать аккаунт";
 
+authButton.innerHTML="Создать аккаунт";
 
-closeProfile();
 
 authModal.style.display="flex";
 
-}
 
+}
 
 
 
@@ -802,9 +984,7 @@ authModal.style.display="none";
 
 
 
-
 async function authAction(){
-
 
 
 let mail=email.value;
@@ -813,10 +993,11 @@ let pass=password.value;
 
 
 
-if(authMode==="register"){
+if(mode==="register"){
 
 
-const {
+
+let {
 
 error
 
@@ -834,9 +1015,11 @@ if(error)
 
 alert(error.message);
 
+
 else
 
 alert("Аккаунт создан");
+
 
 
 }
@@ -848,7 +1031,7 @@ alert("Аккаунт создан");
 else{
 
 
-const {
+let {
 
 error
 
@@ -866,12 +1049,14 @@ if(error)
 
 alert(error.message);
 
+
 else
 
-alert("Вы вошли");
+alert("Вход выполнен");
 
 
 }
+
 
 
 
@@ -886,69 +1071,123 @@ checkUser();
 
 
 
+async function checkUser(){
 
-async function logout(){
 
-await supabaseClient.auth.signOut();
+
+let {
+
+data:{user}
+
+}=await supabaseClient.auth.getUser();
+
+
+
+if(user){
+
+
+userText.innerHTML=
+
+"👤 "+user.email;
+
+
+
+}else{
+
+
+userText.innerHTML=
+
+"Вы не вошли";
+
+
+}
+
+
+
+}
+
+
+
+
+
+async function openProfile(){
+
+
+showScreen("profile");
 
 checkUser();
 
-}
-
-
-
-
-
-
-
-// =======================
-// CHAT
-// =======================
-
-
-
-function addAI(text){
-
-
-let box=document.createElement("div");
-
-
-box.className="message ai";
-
-
-box.innerHTML=
-
-text+
-
-"<br><button class='copy' onclick='copyText(this)'>📋 Копировать</button>";
-
-
-
-messages.appendChild(box);
-
 
 }
 
 
 
-function addUser(text){
 
 
-let box=document.createElement("div");
 
 
-box.className="message user";
+// =====================
+// ЧАТ
+// =====================
 
 
-box.innerHTML=text;
 
 
-messages.appendChild(box);
+function addMessage(text,type){
+
+
+let div=document.createElement("div");
+
+
+div.className="message "+type;
+
+
+
+div.innerHTML=text;
+
+
+
+if(type==="ai"){
+
+
+let btn=document.createElement("button");
+
+
+btn.className="copy";
+
+
+btn.innerHTML="📋 Копировать";
+
+
+btn.onclick=()=>{
+
+
+navigator.clipboard.writeText(text);
+
+
+alert("Скопировано");
+
+
+};
+
+
+
+div.appendChild(btn);
+
 
 
 }
 
 
+
+messages.appendChild(div);
+
+
+messages.scrollTop=
+messages.scrollHeight;
+
+
+}
 
 
 
@@ -966,7 +1205,7 @@ if(!text)return;
 
 
 
-addUser(text);
+addMessage(text,"user");
 
 
 input.value="";
@@ -974,23 +1213,24 @@ input.value="";
 
 
 
-// ТУТ ПОТОМ ПОДКЛЮЧИМ CLOUDFLARE WORKER
-
-
-let answer=
-
-"🤖 Humooe AI думает...\n\n"+
-"Ответ для: "+text;
-
+// ТУТ ПОТОМ ПОДКЛЮЧИМ НАСТОЯЩИЙ AI
 
 
 setTimeout(()=>{
 
 
-addAI(answer);
+addMessage(
+
+"🤖 Humooe AI получил запрос:<br><br>"+text,
+
+"ai"
 
 
-},800);
+);
+
+
+},700);
+
 
 
 
@@ -1000,39 +1240,64 @@ addAI(answer);
 
 
 
-
-
-// =======================
-// COPY
-// =======================
-
-
-
-function copyText(btn){
+// =====================
+// ИСТОРИЯ
+// =====================
 
 
 
-let text=
-
-btn.parentElement.innerText
-.replace("📋 Копировать","");
+async function loadHistory(){
 
 
 
-navigator.clipboard.writeText(text);
+let {
+
+data:{user}
+
+}=await supabaseClient.auth.getUser();
 
 
 
-toast.style.display="block";
+if(!user)return;
 
 
-setTimeout(()=>{
+
+let {
+
+data
+
+}=await supabaseClient
+
+.from("chats")
+
+.select("*")
+
+.eq("user_id",user.id)
+
+.order("created_at");
 
 
-toast.style.display="none";
 
 
-},1500);
+if(data){
+
+
+data.forEach(item=>{
+
+
+addMessage(
+
+item.message,
+
+item.role
+
+);
+
+
+});
+
+
+}
 
 
 
@@ -1041,10 +1306,13 @@ toast.style.display="none";
 
 
 
+
+checkUser();
 
 
 </script>
 
 
 </body>
+
 </html>

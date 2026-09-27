@@ -6,28 +6,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Humooe AI</title>
+<title>Humooe AI Vision</title>
 
 <style>
 
 *{
 box-sizing:border-box;
-font-family:Arial, sans-serif;
+font-family:Inter,Arial,sans-serif;
 }
 
 
 body{
 
 margin:0;
-background:#050507;
-color:white;
 height:100vh;
+background:#070b12;
+color:#fff;
 overflow:hidden;
 
 }
 
 
-body:before{
+
+body::before{
 
 content:"";
 
@@ -36,14 +37,22 @@ position:fixed;
 width:500px;
 height:500px;
 
-background:radial-gradient(circle,#6d28d9,transparent 70%);
+background:radial-gradient(
+circle,
+#00e5ff,
+transparent 65%
+);
+
+opacity:.18;
 
 top:-150px;
-right:-150px;
+right:-100px;
 
 filter:blur(100px);
 
 }
+
+
 
 
 
@@ -59,22 +68,20 @@ display:flex;
 
 
 
-/* ПК МЕНЮ */
+/* МЕНЮ */
 
 
 .sidebar{
 
 width:260px;
 
+padding:25px;
+
 background:#ffffff08;
 
 border-right:1px solid #ffffff15;
 
-padding:25px;
-
-display:flex;
-
-flex-direction:column;
+backdrop-filter:blur(20px);
 
 }
 
@@ -82,18 +89,19 @@ flex-direction:column;
 
 .logo{
 
-font-size:25px;
+font-size:26px;
 
-font-weight:bold;
+font-weight:800;
 
 margin-bottom:40px;
 
 }
 
 
+
 .logo span{
 
-color:#8b5cf6;
+color:#00e5ff;
 
 }
 
@@ -101,30 +109,35 @@ color:#8b5cf6;
 
 .menu{
 
-padding:15px;
+width:100%;
 
-border-radius:15px;
+height:55px;
 
-margin-bottom:10px;
-
-background:none;
-
-color:#aaa;
+margin-bottom:12px;
 
 border:none;
 
-text-align:left;
+border-radius:18px;
+
+background:#ffffff08;
+
+color:#aaa;
 
 font-size:16px;
+
+text-align:left;
+
+padding-left:20px;
 
 cursor:pointer;
 
 }
 
 
+
 .menu:hover{
 
-background:#ffffff15;
+background:#00e5ff20;
 
 color:white;
 
@@ -134,10 +147,12 @@ color:white;
 
 
 
+
+
 /* ОСНОВА */
 
 
-.content{
+.main{
 
 flex:1;
 
@@ -146,6 +161,8 @@ display:flex;
 flex-direction:column;
 
 }
+
+
 
 
 
@@ -173,7 +190,7 @@ height:45px;
 
 border-radius:50%;
 
-background:#ffffff15;
+background:#ffffff10;
 
 display:flex;
 
@@ -187,10 +204,12 @@ justify-content:center;
 
 
 
-/* НЕЙРОСЕТЬ */
 
 
-.home{
+/* ГЛАЗ */
+
+
+.center{
 
 flex:1;
 
@@ -202,135 +221,143 @@ align-items:center;
 
 flex-direction:column;
 
-text-align:center;
-
 }
 
 
 
-.network{
+.eye{
+
+width:230px;
+
+height:130px;
+
+border-radius:100%;
+
+background:
+
+linear-gradient(
+180deg,
+#ffffff,
+#bdefff
+);
+
 
 position:relative;
 
-width:220px;
+box-shadow:
 
-height:220px;
+0 0 40px #00e5ff,
+0 0 120px #00e5ff55;
 
-margin-bottom:40px;
+
+animation:eyePulse 4s infinite;
+
 
 }
 
 
 
-.node{
-
-position:absolute;
-
-width:25px;
-
-height:25px;
-
-background:#8b5cf6;
-
-border-radius:50%;
-
-box-shadow:0 0 30px #8b5cf6;
-
-animation:float 3s infinite;
-
-}
-
-
-
-.node:nth-child(1){
-
-top:20px;
-
-left:100px;
-
-}
-
-
-.node:nth-child(2){
-
-top:100px;
-
-left:20px;
-
-}
-
-
-.node:nth-child(3){
-
-top:100px;
-
-right:20px;
-
-}
-
-
-.node:nth-child(4){
-
-bottom:20px;
-
-left:100px;
-
-}
-
-
-
-.line{
-
-position:absolute;
-
-background:#8b5cf6;
-
-height:2px;
-
-opacity:.6;
-
-}
-
-
-
-.l1{
-
-width:120px;
-
-top:60px;
-
-left:55px;
-
-transform:rotate(40deg);
-
-}
-
-
-.l2{
-
-width:120px;
-
-top:120px;
-
-left:55px;
-
-transform:rotate(-40deg);
-
-}
-
-
-
-@keyframes float{
+@keyframes eyePulse{
 
 
 50%{
 
-transform:translateY(-15px);
+transform:scale(1.05);
 
 }
 
 
 }
+
+
+
+
+
+.pupil{
+
+position:absolute;
+
+width:65px;
+
+height:65px;
+
+border-radius:50%;
+
+background:#07111c;
+
+top:32px;
+
+left:82px;
+
+
+box-shadow:
+
+0 0 30px #00e5ff;
+
+
+animation:look 5s infinite;
+
+}
+
+
+
+
+@keyframes look{
+
+
+0%,100%{
+
+transform:translateX(0);
+
+}
+
+
+50%{
+
+transform:translateX(20px);
+
+}
+
+
+
+}
+
+
+
+.ring{
+
+position:absolute;
+
+width:280px;
+
+height:180px;
+
+border-radius:50%;
+
+border:1px solid #00e5ff55;
+
+animation:rotate 8s linear infinite;
+
+}
+
+
+
+@keyframes rotate{
+
+from{
+
+transform:rotate(0);
+
+}
+
+to{
+
+transform:rotate(360deg);
+
+}
+
+}
+
 
 
 
@@ -339,13 +366,15 @@ h1{
 
 font-size:45px;
 
+margin-top:60px;
+
 }
 
 
 
 p{
 
-color:#999;
+color:#91a0ad;
 
 font-size:18px;
 
@@ -353,29 +382,32 @@ font-size:18px;
 
 
 
-button{
-
-cursor:pointer;
-
-}
-
 
 
 .start{
 
 margin-top:30px;
 
-padding:18px 45px;
+height:60px;
+
+padding:0 45px;
 
 border:none;
 
-border-radius:40px;
+border-radius:30px;
 
-background:white;
+background:#00e5ff;
+
+color:#001018;
 
 font-size:17px;
 
+font-weight:bold;
+
+cursor:pointer;
+
 }
+
 
 
 
@@ -388,11 +420,11 @@ font-size:17px;
 
 display:none;
 
-height:100%;
+flex:1;
 
 flex-direction:column;
 
-padding:20px;
+padding:25px;
 
 }
 
@@ -410,13 +442,13 @@ overflow:auto;
 
 .message{
 
-padding:15px;
+max-width:70%;
+
+padding:16px;
 
 border-radius:20px;
 
 margin-bottom:15px;
-
-max-width:70%;
 
 }
 
@@ -432,9 +464,9 @@ background:#ffffff12;
 
 .user{
 
-background:white;
+background:#00e5ff;
 
-color:black;
+color:#001018;
 
 margin-left:auto;
 
@@ -460,13 +492,13 @@ height:55px;
 
 border-radius:30px;
 
-background:#ffffff10;
-
 border:1px solid #ffffff20;
+
+background:#ffffff10;
 
 color:white;
 
-padding:20px;
+padding:0 20px;
 
 }
 
@@ -480,13 +512,11 @@ border-radius:50%;
 
 border:none;
 
+background:#00e5ff;
+
 }
 
 
-
-
-
-/* МОБИЛА */
 
 
 @media(max-width:700px){
@@ -501,17 +531,36 @@ display:none;
 
 h1{
 
-font-size:35px;
+font-size:34px;
+
+}
+
+
+
+.eye{
+
+width:190px;
+
+height:110px;
+
+}
+
+
+.pupil{
+
+left:65px;
+
+top:25px;
 
 }
 
 
 }
-
 
 </style>
 
 </head>
+
 
 
 <body>
@@ -530,6 +579,7 @@ Humooe <span>AI</span>
 </div>
 
 
+
 <button class="menu">
 🏠 Главная
 </button>
@@ -537,11 +587,6 @@ Humooe <span>AI</span>
 
 <button class="menu">
 💬 Чат
-</button>
-
-
-<button class="menu">
-📚 История
 </button>
 
 
@@ -555,73 +600,57 @@ Humooe <span>AI</span>
 
 
 
-
-
-<div class="content">
+<div class="main">
 
 
 <header>
 
-<div>
-
 <h2>
-Humooe AI
+Vision Mode
 </h2>
-
-</div>
 
 
 <div class="avatar">
-
 👤
-
 </div>
+
 
 </header>
 
 
 
 
-
-<section class="home">
-
-
-<div class="network">
+<section class="center">
 
 
-<div class="line l1"></div>
-
-<div class="line l2"></div>
+<div class="ring"></div>
 
 
-<div class="node"></div>
+<div class="eye">
 
-<div class="node"></div>
-
-<div class="node"></div>
-
-<div class="node"></div>
-
+<div class="pupil"></div>
 
 </div>
 
 
 
 <h1>
-Ваш AI помощник
+Humooe AI
 </h1>
 
 
 <p>
-Новая система интеллектуального общения
+Ваш цифровой интеллект
 </p>
+
 
 
 <button class="start">
 
-Начать чат
+Начать разговор
 
 </button>
+
 
 
 </section>
@@ -637,7 +666,7 @@ Humooe AI
 
 <div class="message ai">
 
-🤖 Привет! Я Humooe AI
+👁️ Система активирована
 
 </div>
 
@@ -648,12 +677,13 @@ Humooe AI
 
 <div class="input">
 
-
-<input placeholder="Напишите сообщение">
+<input placeholder="Сообщение">
 
 
 <button class="send">
+
 ➤
+
 </button>
 
 
@@ -664,11 +694,11 @@ Humooe AI
 
 
 
-
 </div>
 
 
 </div>
+
 
 
 
@@ -679,71 +709,66 @@ const start =
 document.querySelector(".start");
 
 
-const home =
-document.querySelector(".home");
+const center =
+document.querySelector(".center");
 
 
 const chat =
 document.querySelector(".chat");
 
 
-const send =
-document.querySelector(".send");
-
-
-const input =
-document.querySelector(".input input");
-
-
-const messages =
-document.querySelector(".messages");
-
-
 
 start.onclick=()=>{
 
-
-home.style.display="none";
+center.style.display="none";
 
 chat.style.display="flex";
-
 
 };
 
 
 
 
+const send =
+document.querySelector(".send");
+
+const input =
+document.querySelector(".input input");
+
+const messages =
+document.querySelector(".messages");
+
+
+
 send.onclick=()=>{
 
 
-let text=input.value;
+if(!input.value)return;
 
 
-if(!text)return;
+messages.innerHTML+=`
 
-
-messages.innerHTML +=
-
-`
 <div class="message user">
-${text}
+${input.value}
 </div>
+
 `;
 
-input.value="";
 
+input.value="";
 
 
 setTimeout(()=>{
 
 
-messages.innerHTML +=
+messages.innerHTML+=`
 
-`
 <div class="message ai">
-🤖 Ответ Humooe AI готовится...
+👁️ Humooe анализирует запрос...
 </div>
+
 `;
+
 
 },700);
 
@@ -751,8 +776,8 @@ messages.innerHTML +=
 };
 
 
-
 </script>
+
 
 
 </body>

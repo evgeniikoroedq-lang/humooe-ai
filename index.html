@@ -8,7 +8,508 @@
 
 <title>Humooe AI</title>
 
-<link rel="stylesheet" href="style.css">
+<style>
+
+*{
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+
+body{
+
+margin:0;
+background:#050507;
+color:white;
+height:100vh;
+overflow:hidden;
+
+}
+
+
+body:before{
+
+content:"";
+
+position:fixed;
+
+width:500px;
+height:500px;
+
+background:radial-gradient(circle,#6d28d9,transparent 70%);
+
+top:-150px;
+right:-150px;
+
+filter:blur(100px);
+
+}
+
+
+
+.app{
+
+height:100vh;
+
+display:flex;
+
+}
+
+
+
+
+
+/* ПК МЕНЮ */
+
+
+.sidebar{
+
+width:260px;
+
+background:#ffffff08;
+
+border-right:1px solid #ffffff15;
+
+padding:25px;
+
+display:flex;
+
+flex-direction:column;
+
+}
+
+
+
+.logo{
+
+font-size:25px;
+
+font-weight:bold;
+
+margin-bottom:40px;
+
+}
+
+
+.logo span{
+
+color:#8b5cf6;
+
+}
+
+
+
+.menu{
+
+padding:15px;
+
+border-radius:15px;
+
+margin-bottom:10px;
+
+background:none;
+
+color:#aaa;
+
+border:none;
+
+text-align:left;
+
+font-size:16px;
+
+cursor:pointer;
+
+}
+
+
+.menu:hover{
+
+background:#ffffff15;
+
+color:white;
+
+}
+
+
+
+
+
+/* ОСНОВА */
+
+
+.content{
+
+flex:1;
+
+display:flex;
+
+flex-direction:column;
+
+}
+
+
+
+header{
+
+height:80px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:20px;
+
+}
+
+
+
+.avatar{
+
+width:45px;
+
+height:45px;
+
+border-radius:50%;
+
+background:#ffffff15;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+}
+
+
+
+
+
+/* НЕЙРОСЕТЬ */
+
+
+.home{
+
+flex:1;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+
+
+.network{
+
+position:relative;
+
+width:220px;
+
+height:220px;
+
+margin-bottom:40px;
+
+}
+
+
+
+.node{
+
+position:absolute;
+
+width:25px;
+
+height:25px;
+
+background:#8b5cf6;
+
+border-radius:50%;
+
+box-shadow:0 0 30px #8b5cf6;
+
+animation:float 3s infinite;
+
+}
+
+
+
+.node:nth-child(1){
+
+top:20px;
+
+left:100px;
+
+}
+
+
+.node:nth-child(2){
+
+top:100px;
+
+left:20px;
+
+}
+
+
+.node:nth-child(3){
+
+top:100px;
+
+right:20px;
+
+}
+
+
+.node:nth-child(4){
+
+bottom:20px;
+
+left:100px;
+
+}
+
+
+
+.line{
+
+position:absolute;
+
+background:#8b5cf6;
+
+height:2px;
+
+opacity:.6;
+
+}
+
+
+
+.l1{
+
+width:120px;
+
+top:60px;
+
+left:55px;
+
+transform:rotate(40deg);
+
+}
+
+
+.l2{
+
+width:120px;
+
+top:120px;
+
+left:55px;
+
+transform:rotate(-40deg);
+
+}
+
+
+
+@keyframes float{
+
+
+50%{
+
+transform:translateY(-15px);
+
+}
+
+
+}
+
+
+
+
+h1{
+
+font-size:45px;
+
+}
+
+
+
+p{
+
+color:#999;
+
+font-size:18px;
+
+}
+
+
+
+button{
+
+cursor:pointer;
+
+}
+
+
+
+.start{
+
+margin-top:30px;
+
+padding:18px 45px;
+
+border:none;
+
+border-radius:40px;
+
+background:white;
+
+font-size:17px;
+
+}
+
+
+
+
+
+/* ЧАТ */
+
+
+.chat{
+
+display:none;
+
+height:100%;
+
+flex-direction:column;
+
+padding:20px;
+
+}
+
+
+
+.messages{
+
+flex:1;
+
+overflow:auto;
+
+}
+
+
+
+.message{
+
+padding:15px;
+
+border-radius:20px;
+
+margin-bottom:15px;
+
+max-width:70%;
+
+}
+
+
+
+.ai{
+
+background:#ffffff12;
+
+}
+
+
+
+.user{
+
+background:white;
+
+color:black;
+
+margin-left:auto;
+
+}
+
+
+
+.input{
+
+display:flex;
+
+gap:10px;
+
+}
+
+
+
+.input input{
+
+flex:1;
+
+height:55px;
+
+border-radius:30px;
+
+background:#ffffff10;
+
+border:1px solid #ffffff20;
+
+color:white;
+
+padding:20px;
+
+}
+
+
+
+.send{
+
+width:55px;
+
+border-radius:50%;
+
+border:none;
+
+}
+
+
+
+
+
+/* МОБИЛА */
+
+
+@media(max-width:700px){
+
+
+.sidebar{
+
+display:none;
+
+}
+
+
+h1{
+
+font-size:35px;
+
+}
+
+
+}
+
+
+</style>
 
 </head>
 
@@ -19,27 +520,23 @@
 <div class="app">
 
 
-<!-- БОКОВОЕ МЕНЮ -->
-
 <aside class="sidebar">
 
 
-<div class="brand">
+<div class="logo">
 
-<span>H</span>
-Humooe AI
+Humooe <span>AI</span>
 
 </div>
 
 
-
-<button class="menu active">
+<button class="menu">
 🏠 Главная
 </button>
 
 
 <button class="menu">
-💬 Новый чат
+💬 Чат
 </button>
 
 
@@ -54,29 +551,16 @@ Humooe AI
 
 
 
-<div class="bottom">
-
-<button>
-⚙️ Настройки
-</button>
-
-</div>
-
-
 </aside>
 
 
 
 
 
-<!-- ОСНОВА -->
-
-
-<section class="main">
+<div class="content">
 
 
 <header>
-
 
 <div>
 
@@ -84,20 +568,14 @@ Humooe AI
 Humooe AI
 </h2>
 
-<p>
-Ваш умный помощник
-</p>
-
 </div>
 
 
-
-<button class="account">
+<div class="avatar">
 
 👤
 
-</button>
-
+</div>
 
 </header>
 
@@ -105,118 +583,45 @@ Humooe AI
 
 
 
+<section class="home">
 
-<div class="welcome">
+
+<div class="network">
 
 
-<div class="ai-circle">
+<div class="line l1"></div>
 
-✦
+<div class="line l2"></div>
+
+
+<div class="node"></div>
+
+<div class="node"></div>
+
+<div class="node"></div>
+
+<div class="node"></div>
+
 
 </div>
 
 
+
 <h1>
-
-Привет 👋
-
-<br>
-
-Я Humooe AI
-
+Ваш AI помощник
 </h1>
 
 
-
 <p>
-
-Создавай идеи, решай задачи и общайся с искусственным интеллектом.
-
+Новая система интеллектуального общения
 </p>
-
 
 
 <button class="start">
 
-Начать новый чат
+Начать чат
 
 </button>
-
-
-</div>
-
-
-
-
-
-
-
-
-<!-- ЧАТ -->
-
-
-<div class="chat hidden">
-
-
-<div class="messages">
-
-
-<div class="message ai">
-
-🤖 Привет! Чем могу помочь?
-
-</div>
-
-
-<div class="message user">
-
-Расскажи о проекте
-
-</div>
-
-
-
-<div class="message ai">
-
-Конечно. Давай создадим план разработки.
-
-<br>
-
-<button class="copy">
-
-📋 Копировать
-
-</button>
-
-</div>
-
-
-</div>
-
-
-
-
-
-<div class="input-box">
-
-
-<input placeholder="Напишите сообщение...">
-
-
-<button>
-
-➤
-
-</button>
-
-
-</div>
-
-
-</div>
-
-
-
 
 
 </section>
@@ -224,44 +629,132 @@ Humooe AI
 
 
 
-<!-- МОБИЛЬНАЯ НАВИГАЦИЯ -->
+<section class="chat">
 
 
-<nav class="mobile-nav">
+<div class="messages">
 
 
-<button>
-🏠
-</button>
+<div class="message ai">
 
+🤖 Привет! Я Humooe AI
 
-<button>
-💬
-</button>
-
-
-<button>
-📚
-</button>
-
-
-<button>
-👤
-</button>
-
-
-</nav>
-
+</div>
 
 
 </div>
 
 
 
+<div class="input">
 
-<script src="app.js"></script>
+
+<input placeholder="Напишите сообщение">
+
+
+<button class="send">
+➤
+</button>
+
+
+</div>
+
+
+</section>
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+<script>
+
+
+const start =
+document.querySelector(".start");
+
+
+const home =
+document.querySelector(".home");
+
+
+const chat =
+document.querySelector(".chat");
+
+
+const send =
+document.querySelector(".send");
+
+
+const input =
+document.querySelector(".input input");
+
+
+const messages =
+document.querySelector(".messages");
+
+
+
+start.onclick=()=>{
+
+
+home.style.display="none";
+
+chat.style.display="flex";
+
+
+};
+
+
+
+
+send.onclick=()=>{
+
+
+let text=input.value;
+
+
+if(!text)return;
+
+
+messages.innerHTML +=
+
+`
+<div class="message user">
+${text}
+</div>
+`;
+
+input.value="";
+
+
+
+setTimeout(()=>{
+
+
+messages.innerHTML +=
+
+`
+<div class="message ai">
+🤖 Ответ Humooe AI готовится...
+</div>
+`;
+
+},700);
+
+
+};
+
+
+
+</script>
 
 
 </body>
 
-  </html>
+</html>

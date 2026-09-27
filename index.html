@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
 
 <meta charset="UTF-8">
@@ -7,466 +8,7 @@
 
 <title>Humooe AI</title>
 
-<style>
-
-*{
-box-sizing:border-box;
-font-family:Inter,Arial,sans-serif;
-}
-
-body{
-margin:0;
-background:#050505;
-color:white;
-min-height:100vh;
-}
-
-
-body:before{
-
-content:"";
-position:fixed;
-width:500px;
-height:500px;
-
-background:radial-gradient(circle,#7c3aed,transparent 65%);
-
-top:-200px;
-right:-150px;
-
-filter:blur(90px);
-
-animation:glow 8s infinite alternate;
-
-}
-
-
-@keyframes glow{
-
-from{
-transform:translate(0,0);
-}
-
-to{
-transform:translate(-100px,100px);
-}
-
-}
-
-
-
-.app{
-
-max-width:1200px;
-margin:auto;
-min-height:100vh;
-
-display:flex;
-flex-direction:column;
-
-}
-
-
-
-header{
-
-height:80px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-
-padding:20px;
-
-}
-
-
-
-.logo{
-
-font-size:28px;
-font-weight:900;
-
-}
-
-
-.logo span{
-
-color:#8b5cf6;
-
-}
-
-
-
-.profile-btn{
-
-width:45px;
-height:45px;
-
-border-radius:50%;
-
-background:#ffffff15;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-cursor:pointer;
-
-}
-
-
-
-main{
-
-flex:1;
-padding:20px;
-
-}
-
-
-
-.page{
-
-display:none;
-
-animation:appear .4s;
-
-}
-
-
-.page.active{
-
-display:block;
-
-}
-
-
-
-@keyframes appear{
-
-from{
-
-opacity:0;
-transform:translateY(20px);
-
-}
-
-to{
-
-opacity:1;
-
-}
-
-}
-
-
-
-
-.hero{
-
-text-align:center;
-padding-top:40px;
-
-}
-
-
-.hero h1{
-
-font-size:48px;
-
-}
-
-
-.hero p{
-
-color:#999;
-font-size:18px;
-
-}
-
-
-
-
-.ai-core{
-
-width:170px;
-height:170px;
-
-border-radius:50%;
-
-margin:40px auto;
-
-
-background:
-radial-gradient(circle,#fff,#8b5cf6,#111);
-
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-
-font-size:55px;
-
-
-animation:pulse 3s infinite;
-
-}
-
-
-
-@keyframes pulse{
-
-0%,100%{
-
-box-shadow:0 0 30px #8b5cf6;
-transform:scale(1);
-
-}
-
-50%{
-
-box-shadow:0 0 100px #8b5cf6;
-transform:scale(1.08);
-
-}
-
-}
-
-
-
-
-
-.card{
-
-background:#ffffff10;
-
-border:1px solid #ffffff20;
-
-border-radius:30px;
-
-padding:25px;
-
-backdrop-filter:blur(20px);
-
-margin-bottom:20px;
-
-}
-
-
-
-button{
-
-border:none;
-
-border-radius:30px;
-
-height:55px;
-
-cursor:pointer;
-
-font-size:16px;
-
-}
-
-
-
-.primary{
-
-width:100%;
-
-background:white;
-
-color:black;
-
-}
-
-
-
-
-
-.chat{
-
-height:70vh;
-
-display:flex;
-
-flex-direction:column;
-
-}
-
-
-
-.messages{
-
-flex:1;
-
-overflow:auto;
-
-}
-
-
-
-.msg{
-
-padding:15px;
-
-border-radius:25px;
-
-max-width:80%;
-
-margin-bottom:15px;
-
-animation:appear .3s;
-
-}
-
-
-
-.ai{
-
-background:#ffffff15;
-
-}
-
-
-
-.user{
-
-background:white;
-
-color:black;
-
-margin-left:auto;
-
-}
-
-
-
-.copy{
-
-margin-top:10px;
-
-height:35px;
-
-width:auto;
-
-padding:0 15px;
-
-background:#ffffff20;
-
-color:white;
-
-}
-
-
-
-.input{
-
-display:flex;
-
-gap:10px;
-
-}
-
-
-
-.input input{
-
-flex:1;
-
-height:55px;
-
-border-radius:30px;
-
-background:#ffffff10;
-
-border:1px solid #ffffff20;
-
-color:white;
-
-padding:0 20px;
-
-font-size:16px;
-
-}
-
-
-
-.send{
-
-width:55px;
-
-background:white;
-
-}
-
-
-
-
-
-nav{
-
-height:75px;
-
-display:flex;
-
-justify-content:space-around;
-
-align-items:center;
-
-background:#0b0b0bee;
-
-border-top:1px solid #ffffff15;
-
-}
-
-
-
-.nav{
-
-color:#777;
-
-text-align:center;
-
-cursor:pointer;
-
-}
-
-
-
-.nav b{
-
-display:block;
-
-font-size:24px;
-
-}
-
-
-
-.active{
-
-color:white;
-
-}
-
-
-
-
-@media(max-width:600px){
-
-.hero h1{
-
-font-size:36px;
-
-}
-
-}
-
-
-
-</style>
+<link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -477,16 +19,84 @@ font-size:36px;
 <div class="app">
 
 
+<!-- БОКОВОЕ МЕНЮ -->
+
+<aside class="sidebar">
+
+
+<div class="brand">
+
+<span>H</span>
+Humooe AI
+
+</div>
+
+
+
+<button class="menu active">
+🏠 Главная
+</button>
+
+
+<button class="menu">
+💬 Новый чат
+</button>
+
+
+<button class="menu">
+📚 История
+</button>
+
+
+<button class="menu">
+👤 Профиль
+</button>
+
+
+
+<div class="bottom">
+
+<button>
+⚙️ Настройки
+</button>
+
+</div>
+
+
+</aside>
+
+
+
+
+
+<!-- ОСНОВА -->
+
+
+<section class="main">
+
+
 <header>
 
-<div class="logo">
-Humooe <span>AI</span>
+
+<div>
+
+<h2>
+Humooe AI
+</h2>
+
+<p>
+Ваш умный помощник
+</p>
+
 </div>
 
 
-<div class="profile-btn">
+
+<button class="account">
+
 👤
-</div>
+
+</button>
 
 
 </header>
@@ -494,74 +104,89 @@ Humooe <span>AI</span>
 
 
 
-<main>
 
 
-<section class="page active" id="home">
+<div class="welcome">
 
 
-<div class="hero">
+<div class="ai-circle">
 
-
-<h1>
-Ваш AI<br>
-помощник
-</h1>
-
-
-<p>
-Идеи, ответы и решения в одном месте
-</p>
-
-
-
-<div class="ai-core">
 ✦
+
 </div>
 
 
+<h1>
 
-<div class="card">
+Привет 👋
 
+<br>
 
-<h2>
-Начать новый чат
-</h2>
+Я Humooe AI
+
+</h1>
+
 
 
 <p>
-Общайтесь с Humooe AI
+
+Создавай идеи, решай задачи и общайся с искусственным интеллектом.
+
 </p>
 
 
-<button class="primary">
-Открыть чат
+
+<button class="start">
+
+Начать новый чат
+
 </button>
 
 
 </div>
 
 
-</div>
-
-
-</section>
 
 
 
 
-<section class="page" id="chat">
 
 
-<div class="chat">
+<!-- ЧАТ -->
+
+
+<div class="chat hidden">
 
 
 <div class="messages">
 
 
-<div class="msg ai">
+<div class="message ai">
 
-🤖 Привет! Я Humooe AI
+🤖 Привет! Чем могу помочь?
+
+</div>
+
+
+<div class="message user">
+
+Расскажи о проекте
+
+</div>
+
+
+
+<div class="message ai">
+
+Конечно. Давай создадим план разработки.
+
+<br>
+
+<button class="copy">
+
+📋 Копировать
+
+</button>
 
 </div>
 
@@ -570,22 +195,28 @@ Humooe <span>AI</span>
 
 
 
-<div class="input">
+
+
+<div class="input-box">
 
 
 <input placeholder="Напишите сообщение...">
 
 
-<button class="send">
+<button>
+
 ➤
+
 </button>
 
 
 </div>
 
 
-
 </div>
+
+
+
 
 
 </section>
@@ -593,64 +224,30 @@ Humooe <span>AI</span>
 
 
 
-<section class="page" id="profile">
+<!-- МОБИЛЬНАЯ НАВИГАЦИЯ -->
 
 
-<div class="card">
+<nav class="mobile-nav">
 
 
-<h2>
-Профиль
-</h2>
-
-
-<p>
-Войдите в аккаунт
-</p>
-
-
-<button class="primary">
-Войти
+<button>
+🏠
 </button>
 
 
-</div>
+<button>
+💬
+</button>
 
 
-</section>
+<button>
+📚
+</button>
 
 
-
-</main>
-
-
-
-
-<nav>
-
-
-<div class="nav active">
-
-<b>🏠</b>
-Дом
-
-</div>
-
-
-<div class="nav">
-
-<b>💬</b>
-Чат
-
-</div>
-
-
-<div class="nav">
-
-<b>👤</b>
-Профиль
-
-</div>
+<button>
+👤
+</button>
 
 
 </nav>
@@ -659,394 +256,12 @@ Humooe <span>AI</span>
 
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<script>
 
 
-// ===============================
-// SUPABASE
-// ===============================
+<script src="app.js"></script>
 
 
-const SUPABASE_URL =
-"https://reaajdispyhngnqdjsio.supabase.co";
-
-
-const SUPABASE_KEY =
-"ВСТАВЬ_СВОЙ_PUBLISHABLE_KEY";
-
-
-
-const supabaseClient =
-supabase.createClient(
-SUPABASE_URL,
-SUPABASE_KEY
-);
-
-
-
-// ===============================
-// НАВИГАЦИЯ
-// ===============================
-
-
-const pages =
-document.querySelectorAll(".page");
-
-
-const navs =
-document.querySelectorAll(".nav");
-
-
-
-function openPage(id){
-
-
-pages.forEach(p=>{
-p.classList.remove("active");
-});
-
-
-document
-.getElementById(id)
-.classList.add("active");
-
-
-
-}
-
-
-
-
-document.querySelectorAll(".nav")[0]
-.onclick=()=>openPage("home");
-
-
-document.querySelectorAll(".nav")[1]
-.onclick=()=>openPage("chat");
-
-
-document.querySelectorAll(".nav")[2]
-.onclick=()=>openPage("profile");
-
-
-
-
-
-// ===============================
-// АККАУНТ
-// ===============================
-
-
-let authType="login";
-
-
-
-function showAuth(type){
-
-
-authType=type;
-
-
-let email =
-prompt("Введите email");
-
-
-let password =
-prompt("Введите пароль");
-
-
-
-if(!email || !password)
-return;
-
-
-
-if(type==="register"){
-
-
-register(email,password);
-
-
-}else{
-
-
-login(email,password);
-
-
-}
-
-
-
-}
-
-
-
-
-async function register(email,password){
-
-
-const {error}=
-
-await supabaseClient.auth.signUp({
-
-email,
-
-password
-
-});
-
-
-
-if(error){
-
-alert(error.message);
-
-}else{
-
-alert("Аккаунт создан");
-
-}
-
-
-
-}
-
-
-
-
-
-async function login(email,password){
-
-
-const {error}=
-
-await supabaseClient.auth.signInWithPassword({
-
-email,
-
-password
-
-});
-
-
-
-if(error){
-
-alert(error.message);
-
-
-}else{
-
-
-alert("Вы вошли");
-
-
-updateProfile();
-
-
-}
-
-
-}
-
-
-
-
-
-
-async function logout(){
-
-
-await supabaseClient.auth.signOut();
-
-
-updateProfile();
-
-
-}
-
-
-
-
-
-
-async function updateProfile(){
-
-
-const {
-
-data:{user}
-
-}=
-
-await supabaseClient.auth.getUser();
-
-
-
-const profile =
-document.querySelector("#profile p");
-
-
-
-if(user){
-
-
-profile.innerHTML=
-"👤 "+user.email+
-"<br><br><button onclick='logout()'>Выйти</button>";
-
-
-
-}else{
-
-
-profile.innerHTML=
-"Войдите в аккаунт";
-
-
-}
-
-
-
-}
-
-
-
-
-
-// ===============================
-// ЧАТ
-// ===============================
-
-
-
-const input =
-document.querySelector(".input input");
-
-
-const send =
-document.querySelector(".send");
-
-
-const messages =
-document.querySelector(".messages");
-
-
-
-
-
-
-function addMessage(text,type){
-
-
-let div=
-document.createElement("div");
-
-
-div.className=
-"msg "+type;
-
-
-
-div.innerHTML=text;
-
-
-
-if(type==="ai"){
-
-
-let btn=
-document.createElement("button");
-
-
-btn.className="copy";
-
-
-btn.innerHTML=
-"📋 Копировать";
-
-
-btn.onclick=()=>{
-
-
-navigator.clipboard.writeText(text);
-
-
-alert("Скопировано");
-
-
-};
-
-
-
-div.appendChild(btn);
-
-
-}
-
-
-
-messages.appendChild(div);
-
-
-messages.scrollTop=
-messages.scrollHeight;
-
-
-}
-
-
-
-
-
-send.onclick=()=>{
-
-
-let text=
-input.value.trim();
-
-
-
-if(!text)
-return;
-
-
-
-addMessage(text,"user");
-
-input.value="";
-
-
-
-setTimeout(()=>{
-
-
-addMessage(
-
-"🤖 Ответ Humooe AI:<br><br>"+
-"Я получил ваш запрос: "+text,
-
-"ai"
-
-);
-
-
-
-},800);
-
-
-
-};
-
-
-
-
-
-updateProfile();
-
-
-</script>
 </body>
-</html>
+
+  </html>

@@ -12,13 +12,14 @@
 
 *{
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:Arial, sans-serif;
 }
+
 
 body{
 margin:0;
 height:100vh;
-background:#060a10;
+background:#05090f;
 color:white;
 overflow:hidden;
 }
@@ -35,7 +36,7 @@ height:500px;
 
 background:radial-gradient(circle,#00e5ff,transparent 65%);
 
-opacity:.15;
+opacity:.18;
 
 top:-150px;
 right:-150px;
@@ -54,8 +55,8 @@ display:flex;
 }
 
 
+/* ЛЕВОЕ МЕНЮ */
 
-/* меню */
 
 .sidebar{
 
@@ -72,10 +73,9 @@ backdrop-filter:blur(20px);
 }
 
 
-
 .logo{
 
-font-size:25px;
+font-size:26px;
 
 font-weight:900;
 
@@ -84,13 +84,11 @@ margin-bottom:40px;
 }
 
 
-
 .logo span{
 
 color:#00e5ff;
 
 }
-
 
 
 .menu{
@@ -101,7 +99,7 @@ height:55px;
 
 margin-bottom:12px;
 
-border:none;
+border:0;
 
 border-radius:18px;
 
@@ -109,20 +107,28 @@ background:#ffffff10;
 
 color:white;
 
+cursor:pointer;
+
+font-size:16px;
+
 text-align:left;
 
 padding-left:20px;
 
-font-size:16px;
+}
 
-cursor:pointer;
+
+
+.menu:hover{
+
+background:#00e5ff20;
 
 }
 
 
 
 
-/* основа */
+/* ОСНОВА */
 
 
 .main{
@@ -157,9 +163,7 @@ padding:20px;
 
 font-size:12px;
 
-color:#7d8a99;
-
-margin-top:5px;
+color:#8c9aa8;
 
 }
 
@@ -185,9 +189,7 @@ justify-content:center;
 
 
 
-
-
-/* глаз */
+/* ГЛАЗ */
 
 
 .home{
@@ -196,31 +198,13 @@ flex:1;
 
 display:flex;
 
-align-items:center;
-
 justify-content:center;
+
+align-items:center;
 
 flex-direction:column;
 
 text-align:center;
-
-}
-
-
-
-.eye-box{
-
-position:relative;
-
-width:260px;
-
-height:180px;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
 
 }
 
@@ -236,11 +220,12 @@ background:white;
 
 border-radius:100%;
 
-box-shadow:
-0 0 40px #00e5ff,
-0 0 100px #00e5ff55;
-
 position:relative;
+
+box-shadow:
+
+0 0 40px #00e5ff,
+0 0 120px #00e5ff55;
 
 animation:pulse 3s infinite;
 
@@ -270,7 +255,7 @@ height:65px;
 
 border-radius:50%;
 
-background:#06111b;
+background:#06111c;
 
 top:32px;
 
@@ -278,13 +263,13 @@ left:82px;
 
 box-shadow:0 0 30px #00e5ff;
 
-animation:move 4s infinite;
+animation:look 4s infinite;
 
 }
 
 
 
-@keyframes move{
+@keyframes look{
 
 50%{
 
@@ -296,10 +281,11 @@ transform:translateX(20px);
 
 
 
-
 h1{
 
 font-size:45px;
+
+margin-top:50px;
 
 }
 
@@ -307,7 +293,9 @@ font-size:45px;
 
 p{
 
-color:#9aa7b5;
+color:#91a0ad;
+
+font-size:18px;
 
 }
 
@@ -321,7 +309,7 @@ height:60px;
 
 padding:0 45px;
 
-border:none;
+border:0;
 
 border-radius:35px;
 
@@ -334,6 +322,501 @@ font-weight:bold;
 cursor:pointer;
 
 }
+ 
+/* ЧАТ */
+
+.chat{
+
+display:none;
+
+flex:1;
+
+flex-direction:column;
+
+padding:25px;
+
+}
 
 
+
+.messages{
+
+flex:1;
+
+overflow:auto;
+
+padding:10px;
+
+}
+
+
+
+.message{
+
+max-width:75%;
+
+padding:16px;
+
+border-radius:22px;
+
+margin-bottom:15px;
+
+}
+
+
+
+.ai{
+
+background:#ffffff12;
+
+border:1px solid #ffffff15;
+
+}
+
+
+
+.user{
+
+background:#00e5ff;
+
+color:#001018;
+
+margin-left:auto;
+
+}
+
+
+
+.copy{
+
+margin-top:10px;
+
+padding:8px 15px;
+
+border:0;
+
+border-radius:20px;
+
+background:#ffffff20;
+
+color:white;
+
+cursor:pointer;
+
+}
+
+
+
+.input-box{
+
+display:flex;
+
+gap:10px;
+
+}
+
+
+
+.input-box input{
+
+flex:1;
+
+height:55px;
+
+border-radius:30px;
+
+border:1px solid #ffffff20;
+
+background:#ffffff10;
+
+color:white;
+
+padding:0 20px;
+
+font-size:16px;
+
+}
+
+
+
+.send{
+
+width:55px;
+
+height:55px;
+
+border-radius:50%;
+
+border:0;
+
+background:#00e5ff;
+
+cursor:pointer;
+
+}
+
+
+
+/* ТЕЛЕФОН */
+
+
+@media(max-width:700px){
+
+.sidebar{
+
+display:none;
+
+}
+
+
+h1{
+
+font-size:34px;
+
+}
+
+
+.eye{
+
+width:190px;
+
+height:110px;
+
+}
+
+
+.pupil{
+
+width:55px;
+
+height:55px;
+
+top:27px;
+
+left:68px;
+
+}
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="app">
+
+
+<aside class="sidebar">
+
+
+<div class="logo">
+
+Humooe <span>AI</span>
+
+</div>
+
+
+<button class="menu">
+🏠 Главная
+</button>
+
+
+<button class="menu">
+💬 Чат
+</button>
+
+
+<button class="menu">
+👤 Профиль
+</button>
+
+
+</aside>
+
+
+
+<div class="main">
+
+
+<header>
+
+
+<div>
+
+<h2>
+
+Humooe Chat
+
+</h2>
+
+
+<div class="creator">
+
+Creator: @humooe
+
+</div>
+
+
+</div>
+
+
+
+<div class="avatar">
+
+👤
+
+</div>
+
+
+</header>
+
+
+
+
+<section class="home">
+
+
+<div class="eye">
+
+<div class="pupil"></div>
+
+</div>
+
+
+
+<h1>
+
+Humooe Chat
+
+</h1>
+
+
+<p>
+
+Ваш цифровой интеллект
+
+</p>
+
+
+
+<button class="start">
+
+Начать разговор
+
+</button>
+
+
+
+</section>
+
+
+<section class="chat">
+
+
+<div class="messages">
+
+
+<div class="message ai">
+
+👁️ Humooe AI активирован
+
+</div>
+
+
+</div>
+
+
+<div class="input-box">
+
+
+<input placeholder="Напишите сообщение...">
+
+
+<button class="send">
+
+➤
+
+</button>
+
+
+</div>
+
+
+</section>
+
+
+</div>
+
+
+</div>
+  <script>
+
+
+const start =
+document.querySelector(".start");
+
+
+const home =
+document.querySelector(".home");
+
+
+const chat =
+document.querySelector(".chat");
+
+
+
+start.onclick = () => {
+
+home.style.display="none";
+
+chat.style.display="flex";
+
+};
+
+
+
+
+
+const send =
+document.querySelector(".send");
+
+
+const input =
+document.querySelector(".input-box input");
+
+
+const messages =
+document.querySelector(".messages");
+
+
+
+
+
+function addMessage(text,type){
+
+
+const div =
+document.createElement("div");
+
+
+div.className =
+"message " + type;
+
+
+div.innerHTML=text;
+
+
+
+if(type==="ai"){
+
+
+const copy =
+document.createElement("button");
+
+
+copy.className="copy";
+
+copy.innerHTML="📋 Копировать";
+
+
+copy.onclick=()=>{
+
+
+navigator.clipboard.writeText(
+div.innerText
+);
+
+
+copy.innerHTML="✅ Скопировано";
+
+
+};
+
+
+
+div.appendChild(copy);
+
+
+}
+
+
+
+messages.appendChild(div);
+
+
+messages.scrollTop =
+messages.scrollHeight;
+
+
+}
+
+
+
+
+
+send.onclick=()=>{
+
+
+let text =
+input.value.trim();
+
+
+if(!text) return;
+
+
+
+addMessage(text,"user");
+
+
+input.value="";
+
+
+
+setTimeout(()=>{
+
+
+addMessage(
+
+"👁️ Humooe AI анализирует запрос:<br><br>"+text,
+
+"ai"
+
+);
+
+
+},800);
+
+
+
+};
+
+
+
+
+
+input.addEventListener("keydown",(e)=>{
+
+
+if(e.key==="Enter"){
+
+send.click();
+
+}
+
+
+});
+
+
+</script>
+
+
+</body>
+
+</html>
+  
   
